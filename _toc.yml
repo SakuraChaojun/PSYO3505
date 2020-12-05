@@ -14,8 +14,8 @@
 
 - part: Demos
   sections:
-    - file: markdown
-    - file: notebooks
+    - file: demos/latex
+    - file: demos/gitbook
     
 - part: Others
   sections:
