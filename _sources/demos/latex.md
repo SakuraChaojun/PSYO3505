@@ -142,6 +142,9 @@ Latex also has many more methods and techniques, but I will not elaborate on the
 
 In addition, I highly recommend a good online cooperative website 'overleaf' (Easy to use ,online and collaborative latex editor).  Unlike cocalc, this website focus on the academic paper (especially for science or engineering) writing. 
 
+```{tip} Using 'overleaf' to writing paper is a good way to improve your latex skills.
+```
+
 Cheers!
 
 
