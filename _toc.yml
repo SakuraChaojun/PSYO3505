@@ -4,7 +4,7 @@
 - file: intro
 - part: Assignments
   sections:
-    - file: markdown
+    - file: assignments/EDA
     - file: notebooks
     
 - part: Projects
