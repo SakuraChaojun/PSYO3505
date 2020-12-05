@@ -22,7 +22,6 @@
     - file: markdown
     - file: notebooks
 
-- part: REFERENCES
+- part: References
   sections:
-    - file: markdown
-    - file: notebooks
+    - file: re
