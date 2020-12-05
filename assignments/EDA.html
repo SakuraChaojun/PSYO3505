@@ -1,0 +1,1601 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exploratory data analysis &#8212; PSYO3505 Portfolio</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">PSYO3505 Portfolio</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks.html">
+   Content with notebooks
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Projects
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks.html">
+   Content with notebooks
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Demos
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../demos/latex.html">
+   Writing Math Equations in Jupyter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../demos/gitbook.html">
+   Use Git book bulid your own page
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Others
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks.html">
+   Content with notebooks
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  References
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../re.html">
+   References
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/assignments/EDA.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/SakuraChaojun/PSYO3505"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/SakuraChaojun/PSYO3505/main?urlpath=tree/docs/assignments/EDA.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#background">
+   Background
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#read-file-and-check-it">
+   Read file and check it
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-cleaning">
+   Data cleaning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analyzing-relationships-between-variables">
+   Analyzing relationships between variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualization">
+   Visualization
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interpretation">
+   Interpretation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="exploratory-data-analysis">
+<h1>Exploratory data analysis<a class="headerlink" href="#exploratory-data-analysis" title="Permalink to this headline">¶</a></h1>
+<p>Based on assignment 3 <br>
+<font color = red >This Demo and the attached files belong to course PSYO/NESC 3505 Neural Data Science, at Dalhousie University. You should not disseminate, distribute or copy. </font>
+<br>https://dalpsychneuro.github.io/NESC_3505_textbook/intro.html
+<br>© Copyright 2020.PSYO/NESC 3505 FAll 2020
+<br>
+<strong>For demonstration purposes only</strong></p>
+<div class="section" id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Flanker Data
+We’ll be working with data from a similar flanker experiment as we used in Assignment 2. However, in Assignment 2 we gave you a “sanitized” version of the data, where we had done a bit of clean-up to extract just the information we wanted you to work with. In this assignment you’ll get experience starting with the raw data and extracting the necessary information yourself.</p>
+</div></blockquote>
+<p>–PSYO 3505 Fall 2019 Assignment 2 cell1</p>
+</div>
+<div class="section" id="read-file-and-check-it">
+<h2>Read file and check it<a class="headerlink" href="#read-file-and-check-it" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">b478a6fd18e5</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>First of all we need input and examine the data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subjects</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;001_2015_05_22_11_30&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;002_2015_05_25_14_36&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;003_2015_05_28_14_09&#39;</span>
+           <span class="p">]</span>
+
+<span class="n">in_file</span> <span class="o">=</span> <span class="n">subjects</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="n">subjects</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;_data.txt&#39;</span>
+
+<span class="c1">#input to data_frame</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">in_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id\tyear\tmonth\tday\thour\tminute\tgender\tage\thandedness\twait\tblock\ttrial\ttarget_location\ttarget\tflankers\trt\tresponse\terror\tpre_target_response\tITI_response\ttarget_on_error</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>001\t2015\t05\t22\t11\t30\tm\t25\tr\t3.24\tpra...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>001\t2015\t05\t22\t11\t30\tm\t25\tr\t3.24\tpra...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>001\t2015\t05\t22\t11\t30\tm\t25\tr\t3.24\tpra...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>001\t2015\t05\t22\t11\t30\tm\t25\tr\t3.24\tpra...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>001\t2015\t05\t22\t11\t30\tm\t25\tr\t3.24\tpra...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>looks like not very well, we need add escape character. Typically, I prefer read csv file directly and then check the head.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">in_file</span><span class="p">,</span><span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>hour</th>
+      <th>minute</th>
+      <th>gender</th>
+      <th>age</th>
+      <th>handedness</th>
+      <th>wait</th>
+      <th>...</th>
+      <th>trial</th>
+      <th>target_location</th>
+      <th>target</th>
+      <th>flankers</th>
+      <th>rt</th>
+      <th>response</th>
+      <th>error</th>
+      <th>pre_target_response</th>
+      <th>ITI_response</th>
+      <th>target_on_error</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>2015</td>
+      <td>5</td>
+      <td>22</td>
+      <td>11</td>
+      <td>30</td>
+      <td>m</td>
+      <td>25</td>
+      <td>r</td>
+      <td>3.240</td>
+      <td>...</td>
+      <td>1</td>
+      <td>left</td>
+      <td>black</td>
+      <td>incongruent</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>False</td>
+      <td>0.023</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>2015</td>
+      <td>5</td>
+      <td>22</td>
+      <td>11</td>
+      <td>30</td>
+      <td>m</td>
+      <td>25</td>
+      <td>r</td>
+      <td>3.240</td>
+      <td>...</td>
+      <td>2</td>
+      <td>right</td>
+      <td>black</td>
+      <td>incongruent</td>
+      <td>0.550</td>
+      <td>black</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>0.023</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>2015</td>
+      <td>5</td>
+      <td>22</td>
+      <td>11</td>
+      <td>30</td>
+      <td>m</td>
+      <td>25</td>
+      <td>r</td>
+      <td>3.240</td>
+      <td>...</td>
+      <td>3</td>
+      <td>up</td>
+      <td>white</td>
+      <td>incongruent</td>
+      <td>0.565</td>
+      <td>white</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>0.024</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>2015</td>
+      <td>5</td>
+      <td>22</td>
+      <td>11</td>
+      <td>30</td>
+      <td>m</td>
+      <td>25</td>
+      <td>r</td>
+      <td>3.240</td>
+      <td>...</td>
+      <td>4</td>
+      <td>up</td>
+      <td>black</td>
+      <td>congruent</td>
+      <td>0.453</td>
+      <td>black</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>0.024</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>2015</td>
+      <td>5</td>
+      <td>22</td>
+      <td>11</td>
+      <td>30</td>
+      <td>m</td>
+      <td>25</td>
+      <td>r</td>
+      <td>3.240</td>
+      <td>...</td>
+      <td>5</td>
+      <td>down</td>
+      <td>black</td>
+      <td>congruent</td>
+      <td>0.442</td>
+      <td>black</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>0.023</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>187</th>
+      <td>1</td>
+      <td>2015</td>
+      <td>5</td>
+      <td>22</td>
+      <td>11</td>
+      <td>30</td>
+      <td>m</td>
+      <td>25</td>
+      <td>r</td>
+      <td>1.627</td>
+      <td>...</td>
+      <td>28</td>
+      <td>left</td>
+      <td>white</td>
+      <td>congruent</td>
+      <td>0.349</td>
+      <td>white</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>0.024</td>
+    </tr>
+    <tr>
+      <th>188</th>
+      <td>1</td>
+      <td>2015</td>
+      <td>5</td>
+      <td>22</td>
+      <td>11</td>
+      <td>30</td>
+      <td>m</td>
+      <td>25</td>
+      <td>r</td>
+      <td>1.627</td>
+      <td>...</td>
+      <td>29</td>
+      <td>right</td>
+      <td>white</td>
+      <td>congruent</td>
+      <td>0.371</td>
+      <td>white</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>0.023</td>
+    </tr>
+    <tr>
+      <th>189</th>
+      <td>1</td>
+      <td>2015</td>
+      <td>5</td>
+      <td>22</td>
+      <td>11</td>
+      <td>30</td>
+      <td>m</td>
+      <td>25</td>
+      <td>r</td>
+      <td>1.627</td>
+      <td>...</td>
+      <td>30</td>
+      <td>up</td>
+      <td>black</td>
+      <td>incongruent</td>
+      <td>0.549</td>
+      <td>black</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>0.023</td>
+    </tr>
+    <tr>
+      <th>190</th>
+      <td>1</td>
+      <td>2015</td>
+      <td>5</td>
+      <td>22</td>
+      <td>11</td>
+      <td>30</td>
+      <td>m</td>
+      <td>25</td>
+      <td>r</td>
+      <td>1.627</td>
+      <td>...</td>
+      <td>31</td>
+      <td>left</td>
+      <td>white</td>
+      <td>neutral</td>
+      <td>0.463</td>
+      <td>white</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>0.023</td>
+    </tr>
+    <tr>
+      <th>191</th>
+      <td>1</td>
+      <td>2015</td>
+      <td>5</td>
+      <td>22</td>
+      <td>11</td>
+      <td>30</td>
+      <td>m</td>
+      <td>25</td>
+      <td>r</td>
+      <td>1.627</td>
+      <td>...</td>
+      <td>32</td>
+      <td>right</td>
+      <td>black</td>
+      <td>neutral</td>
+      <td>0.430</td>
+      <td>black</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>0.023</td>
+    </tr>
+  </tbody>
+</table>
+<p>192 rows × 21 columns</p>
+</div></div></div>
+</div>
+<p>look at the head and tail again</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>hour</th>
+      <th>minute</th>
+      <th>gender</th>
+      <th>age</th>
+      <th>handedness</th>
+      <th>wait</th>
+      <th>...</th>
+      <th>trial</th>
+      <th>target_location</th>
+      <th>target</th>
+      <th>flankers</th>
+      <th>rt</th>
+      <th>response</th>
+      <th>error</th>
+      <th>pre_target_response</th>
+      <th>ITI_response</th>
+      <th>target_on_error</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>2015</td>
+      <td>5</td>
+      <td>22</td>
+      <td>11</td>
+      <td>30</td>
+      <td>m</td>
+      <td>25</td>
+      <td>r</td>
+      <td>3.24</td>
+      <td>...</td>
+      <td>1</td>
+      <td>left</td>
+      <td>black</td>
+      <td>incongruent</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>False</td>
+      <td>0.023</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>2015</td>
+      <td>5</td>
+      <td>22</td>
+      <td>11</td>
+      <td>30</td>
+      <td>m</td>
+      <td>25</td>
+      <td>r</td>
+      <td>3.24</td>
+      <td>...</td>
+      <td>2</td>
+      <td>right</td>
+      <td>black</td>
+      <td>incongruent</td>
+      <td>0.550</td>
+      <td>black</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>0.023</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>2015</td>
+      <td>5</td>
+      <td>22</td>
+      <td>11</td>
+      <td>30</td>
+      <td>m</td>
+      <td>25</td>
+      <td>r</td>
+      <td>3.24</td>
+      <td>...</td>
+      <td>3</td>
+      <td>up</td>
+      <td>white</td>
+      <td>incongruent</td>
+      <td>0.565</td>
+      <td>white</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>0.024</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>2015</td>
+      <td>5</td>
+      <td>22</td>
+      <td>11</td>
+      <td>30</td>
+      <td>m</td>
+      <td>25</td>
+      <td>r</td>
+      <td>3.24</td>
+      <td>...</td>
+      <td>4</td>
+      <td>up</td>
+      <td>black</td>
+      <td>congruent</td>
+      <td>0.453</td>
+      <td>black</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>0.024</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>2015</td>
+      <td>5</td>
+      <td>22</td>
+      <td>11</td>
+      <td>30</td>
+      <td>m</td>
+      <td>25</td>
+      <td>r</td>
+      <td>3.24</td>
+      <td>...</td>
+      <td>5</td>
+      <td>down</td>
+      <td>black</td>
+      <td>congruent</td>
+      <td>0.442</td>
+      <td>black</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>0.023</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 21 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>hour</th>
+      <th>minute</th>
+      <th>gender</th>
+      <th>age</th>
+      <th>handedness</th>
+      <th>wait</th>
+      <th>...</th>
+      <th>trial</th>
+      <th>target_location</th>
+      <th>target</th>
+      <th>flankers</th>
+      <th>rt</th>
+      <th>response</th>
+      <th>error</th>
+      <th>pre_target_response</th>
+      <th>ITI_response</th>
+      <th>target_on_error</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>187</th>
+      <td>1</td>
+      <td>2015</td>
+      <td>5</td>
+      <td>22</td>
+      <td>11</td>
+      <td>30</td>
+      <td>m</td>
+      <td>25</td>
+      <td>r</td>
+      <td>1.627</td>
+      <td>...</td>
+      <td>28</td>
+      <td>left</td>
+      <td>white</td>
+      <td>congruent</td>
+      <td>0.349</td>
+      <td>white</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>0.024</td>
+    </tr>
+    <tr>
+      <th>188</th>
+      <td>1</td>
+      <td>2015</td>
+      <td>5</td>
+      <td>22</td>
+      <td>11</td>
+      <td>30</td>
+      <td>m</td>
+      <td>25</td>
+      <td>r</td>
+      <td>1.627</td>
+      <td>...</td>
+      <td>29</td>
+      <td>right</td>
+      <td>white</td>
+      <td>congruent</td>
+      <td>0.371</td>
+      <td>white</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>0.023</td>
+    </tr>
+    <tr>
+      <th>189</th>
+      <td>1</td>
+      <td>2015</td>
+      <td>5</td>
+      <td>22</td>
+      <td>11</td>
+      <td>30</td>
+      <td>m</td>
+      <td>25</td>
+      <td>r</td>
+      <td>1.627</td>
+      <td>...</td>
+      <td>30</td>
+      <td>up</td>
+      <td>black</td>
+      <td>incongruent</td>
+      <td>0.549</td>
+      <td>black</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>0.023</td>
+    </tr>
+    <tr>
+      <th>190</th>
+      <td>1</td>
+      <td>2015</td>
+      <td>5</td>
+      <td>22</td>
+      <td>11</td>
+      <td>30</td>
+      <td>m</td>
+      <td>25</td>
+      <td>r</td>
+      <td>1.627</td>
+      <td>...</td>
+      <td>31</td>
+      <td>left</td>
+      <td>white</td>
+      <td>neutral</td>
+      <td>0.463</td>
+      <td>white</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>0.023</td>
+    </tr>
+    <tr>
+      <th>191</th>
+      <td>1</td>
+      <td>2015</td>
+      <td>5</td>
+      <td>22</td>
+      <td>11</td>
+      <td>30</td>
+      <td>m</td>
+      <td>25</td>
+      <td>r</td>
+      <td>1.627</td>
+      <td>...</td>
+      <td>32</td>
+      <td>right</td>
+      <td>black</td>
+      <td>neutral</td>
+      <td>0.430</td>
+      <td>black</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>0.023</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 21 columns</p>
+</div></div></div>
+</div>
+<p>Then we check have missing value</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id                     0
+year                   0
+month                  0
+day                    0
+hour                   0
+minute                 0
+gender                 0
+age                    0
+handedness             0
+wait                   0
+block                  0
+trial                  0
+target_location        0
+target                 0
+flankers               0
+rt                     2
+response               2
+error                  2
+pre_target_response    0
+ITI_response           0
+target_on_error        0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="data-cleaning">
+<h2>Data cleaning<a class="headerlink" href="#data-cleaning" title="Permalink to this headline">¶</a></h2>
+<p>Obviously, we need to remove missing data by appling</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span> <span class="n">method</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id                     0
+year                   0
+month                  0
+day                    0
+hour                   0
+minute                 0
+gender                 0
+age                    0
+handedness             0
+wait                   0
+block                  0
+trial                  0
+target_location        0
+target                 0
+flankers               0
+rt                     0
+response               0
+error                  0
+pre_target_response    0
+ITI_response           0
+target_on_error        0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>This experiment has ‘practice’, the main idea is giving participants a chance to figure out the experiment. But we do not need it in our EDA. Not all experiments have ‘practice’ .</p>
+<p>value = df[‘block’]
+print(value.unique())</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">block</span><span class="o">!=</span><span class="s1">&#39;practice&#39;</span><span class="p">]</span>
+<span class="n">value</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;block&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;1&#39; &#39;2&#39; &#39;3&#39; &#39;4&#39; &#39;5&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then we found ‘rt’ column is not milliseconds and need to convert</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;rt&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32     0.528
+33     0.419
+34     0.514
+35     0.406
+36     0.502
+       ...  
+187    0.349
+188    0.371
+189    0.549
+190    0.463
+191    0.430
+Name: rt, Length: 160, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;rt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;rt&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">1000</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;rt&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32     528.0
+33     419.0
+34     514.0
+35     406.0
+36     502.0
+       ...  
+187    349.0
+188    371.0
+189    549.0
+190    463.0
+191    430.0
+Name: rt, Length: 160, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>‘rt’ is our interested variable, but In most behavioural studies, RTs are not normally distributed, so we need to Examining the RT distribution</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;rt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    160.00000
+mean     465.16875
+std      101.47170
+min      314.00000
+25%      392.25000
+50%      454.00000
+75%      505.25000
+max      845.00000
+Name: rt, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>plot a histogram of RTs</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;rt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;hist&#39;</span><span class="p">)</span>
+
+<span class="c1"># add a solid line at the median and dashed lines at the 25th and 75th percentiles (done for you)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;rt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()[</span><span class="s1">&#39;25%&#39;</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;turquoise&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;rt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">(),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;cyan&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;rt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()[</span><span class="s1">&#39;75%&#39;</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;turquoise&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+
+<span class="c1"># Rememebr to use plt.show() to see your plots (often they show anyway, but with some garbagy text at the top)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/EDA_28_0.png" src="../_images/EDA_28_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="analyzing-relationships-between-variables">
+<h2>Analyzing relationships between variables<a class="headerlink" href="#analyzing-relationships-between-variables" title="Permalink to this headline">¶</a></h2>
+<p>According to above figure, the histogram look not follow normal distribution, Looks like right skewed. Because the data sets have low ‘high value
+<br> check the cdf</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;rt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;hist&#39;</span><span class="p">,</span><span class="n">cumulative</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">density</span> <span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># add a dashed oragne line at the median</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;rt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()[</span><span class="s1">&#39;25%&#39;</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;turquoise&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;rt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">(),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;cyan&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;rt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()[</span><span class="s1">&#39;75%&#39;</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;turquoise&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/EDA_31_0.png" src="../_images/EDA_31_0.png" />
+</div>
+</div>
+<p>How should we do in this situation. The course tells me :
+<br></p>
+<blockquote>
+<div><p>While the skew in the RT data makes sense, for the reasons described above, it’s problematic when running statistics on the data. This is because many conventional statistical tests, like t-tests and ANOVAs, assume that the data are normally distributed. Using skewed data can cause unreliable results.
+<br>
+<br>
+For this reason, many researchers apply some transformation to RTs to make their distribution more normal (statistically normal, that is). A common one is to take the logarithm of the RT values: log(RT)log(RT); another is to take the inverse: 1/RT.</p>
+</div></blockquote>
+<p>—PSYO 3505 Fall 2019 Assignment 2 cell40</p>
+<p>So, for log(RT)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># log-transform the rt data (done for you) </span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;logrt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;rt&#39;</span><span class="p">])</span>
+
+<span class="c1"># put your plotting code here</span>
+<span class="c1"># YOUR CODE HERE</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;logrt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;hist&#39;</span><span class="p">)</span>
+
+<span class="c1"># add a solid line at the median and dashed lines at the 25th and 75th percentiles (done for you)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;logrt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()[</span><span class="s1">&#39;25%&#39;</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;turquoise&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;logrt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">(),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;cyan&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;logrt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()[</span><span class="s1">&#39;75%&#39;</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;turquoise&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+
+<span class="c1"># Rememebr to use plt.show() to see your plots (often they show anyway, but with some garbagy text at the top)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/EDA_34_0.png" src="../_images/EDA_34_0.png" />
+</div>
+</div>
+<p>inverse: <span class="math notranslate nohighlight">\(1/RT\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;invrt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;rt&#39;</span><span class="p">])</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;invrt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;hist&#39;</span><span class="p">)</span>
+<span class="c1"># add a solid line at the median and dashed lines at the 25th and 75th percentiles (done for you)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;invrt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()[</span><span class="s1">&#39;25%&#39;</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;turquoise&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;invrt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">(),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;cyan&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;invrt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()[</span><span class="s1">&#39;75%&#39;</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;turquoise&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+
+<span class="c1"># Rememebr to use plt.show() to see your plots (often they show anyway, but with some garbagy text at the top)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/EDA_36_0.png" src="../_images/EDA_36_0.png" />
+</div>
+</div>
+<p>After that, we want to explore the data will be on errors and reaction times (RTs).</p>
+<blockquote>
+<div><p>Recall that these data are from a “flanker” experiment in which participants had to respond with a left or right button press, depending on whether the target (centre) arrow pointed left or right. The target arrow was flanked with two arrows on either side that were either congruent (pointed in same direction) or incongruent (opposite direction).</p>
+</div></blockquote>
+<p>—PSYO 3505 Fall 2019 Assignment 2 cell48</p>
+<div class="highlight-{tip}You notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rt_mean</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="s1">&#39;flankers&#39;</span><span class="p">)[[</span><span class="s1">&#39;rt&#39;</span><span class="p">,</span><span class="s1">&#39;error&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+<span class="n">rt_mean</span> <span class="o">=</span> <span class="n">rt_mean</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;neutral&#39;</span><span class="p">)</span>
+<span class="n">rt_mean</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>rt</th>
+    </tr>
+    <tr>
+      <th>flankers</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>congruent</th>
+      <td>452.60</td>
+    </tr>
+    <tr>
+      <th>incongruent</th>
+      <td>466.05</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Generate a table for accuracy (the error column).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">correct</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="s1">&#39;flankers&#39;</span><span class="p">)[[</span><span class="s1">&#39;error&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
+<span class="n">correct</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Correct&#39;</span><span class="p">]</span>
+<span class="n">correct</span> <span class="o">=</span> <span class="n">correct</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;neutral&#39;</span><span class="p">)</span>
+<span class="n">correct</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Correct</th>
+    </tr>
+    <tr>
+      <th>flankers</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>congruent</th>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>incongruent</th>
+      <td>34</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>showing the accuracy rate</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total</span><span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="s1">&#39;flankers&#39;</span><span class="p">)[[</span><span class="s1">&#39;error&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">)</span>
+<span class="n">correct</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="s1">&#39;flankers&#39;</span><span class="p">)[[</span><span class="s1">&#39;error&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
+<span class="n">number</span> <span class="o">=</span> <span class="n">correct</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span><span class="o">/</span><span class="n">total</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">number</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Accuracy&#39;</span><span class="p">]</span>
+<span class="n">number</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Accuracy</th>
+    </tr>
+    <tr>
+      <th>flankers</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>congruent</th>
+      <td>1.00</td>
+    </tr>
+    <tr>
+      <th>incongruent</th>
+      <td>0.85</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="visualization">
+<h2>Visualization<a class="headerlink" href="#visualization" title="Permalink to this headline">¶</a></h2>
+<p>Plot box plots of the log-transformed RT data (logrt) for each flanker conditio</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">boxplot1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;flankers&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;congruent&#39;</span><span class="p">,</span><span class="s1">&#39;logrt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;box&#39;</span><span class="p">,</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Congruent&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">boxplot2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;flankers&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;incongruent&#39;</span><span class="p">,</span><span class="s1">&#39;logrt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;box&#39;</span><span class="p">,</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Incongruent&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/EDA_45_0.png" src="../_images/EDA_45_0.png" />
+<img alt="../_images/EDA_45_1.png" src="../_images/EDA_45_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="interpretation">
+<h2>Interpretation<a class="headerlink" href="#interpretation" title="Permalink to this headline">¶</a></h2>
+<p>Basis of EDA, I can say incongruent flankers would lead to slower and less accurate responses. according to the participant results, the congruent condition has 100% accuracy and 452.60 (mean) response time. Incongruent condition has 85% accuracy and 466.05 (mean) response time.</p>
+<p>So far, we end EDA methods (basic).
+<br>
+<br>
+Through this assignment, I learned the basic steps of data analysis. Especially,EDA methods:
+<br> Read files
+<br> Data cleaning
+<br> Analyzing relationships between variables
+<br> Visualization
+<br> Interpretation</p>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p>[1] <a class="reference external" href="https://dalpsychneuro.github.io/NESC_3505_textbook/intro.html">NESC 3505 Neural Data Science, at Dalhousie University. Textbook</a>
+<br>
+[2] NESC 3505 Neural Data Science, at Dalhousie University. Assignment 3
+<br>
+[3] <a class="reference external" href="https://towardsdatascience.com/an-extensive-guide-to-exploratory-data-analysis-ddd99a03199e">An Extensive Step by Step Guide to Exploratory Data Analysis</a></p>
+<p>Based on assignment 3 <br>
+<font color = red >This Demo and the attached files belong to course PSYO/ NESC 3505 Neural Data Science, at Dalhousie University. You should not disseminate, distribute or copy. </font>
+<br>https://dalpsychneuro.github.io/NESC_3505_textbook/intro.html
+<br>© Copyright 2020.PSYO/NESC 3505 FAll 2020
+<br>
+<strong>For demonstration purposes only</strong></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./assignments"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Chaojun Ma<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
