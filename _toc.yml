@@ -2,7 +2,27 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 #
 - file: intro
-- file: content
+- part: Assignments
+  sections:
+    - file: markdown
+    - file: notebooks
+    
+- part: Projects
+  sections:
+    - file: markdown
+    - file: notebooks
+
+- part: Demos
+  sections:
+    - file: markdown
+    - file: notebooks
+    
+- part: Others
+  sections:
+    - file: markdown
+    - file: notebooks
+
+- part: REFERENCES
   sections:
     - file: markdown
     - file: notebooks
