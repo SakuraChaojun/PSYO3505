@@ -84,13 +84,13 @@ $$
 \end{matrix} \tag{3-1}
 $$
 ```
-$$
+$
 \begin{matrix}
 1 & 2 & 3 \\
 4 & 5 & 6 \\
 7 & 8 & 9
 \end{matrix} \tag{3-1}
-$$
+$
 
 The matrix shown above is not very beautiful, you can put brackets on the matrix
 
@@ -105,7 +105,7 @@ $$
 \right ] \tag{3-3}
 $$
 ```
-$$
+$
 \left [
 \begin{matrix}
 1 & 2 & 3 \\
@@ -113,7 +113,7 @@ $$
 7 & 8 & 9
 \end{matrix}
 \right ] \tag{3-3}
-$$
+$
 
 If you have too many matrix elements, you can use  \cdots ... \ddots ⋱ \vdots ⋮ And so on ellipsis to define the matrix
 
@@ -127,14 +127,14 @@ $$
 \end{bmatrix} \tag{3-8}
 $$
 ```
-$$
+$
 \begin{bmatrix}
 1 & 2 & \cdots & 4 \\
 7 & 6 & \cdots & 5 \\
 \vdots & \vdots & \ddots & \vdots \\
 8 & 9 & \cdots & 10
 \end{bmatrix} \tag{3-8}
-$$
+$
 
 ## Learn More
 
