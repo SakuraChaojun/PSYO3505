@@ -5,7 +5,7 @@
 - part: Assignments
   sections:
     - file: assignments/EDA
-    - file: notebooks
+    - file: assignments/bioimage
     
 - part: Projects
   sections:
