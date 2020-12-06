@@ -5,11 +5,10 @@
 # 
 
 # Based on assignment 3 <br>
-# <font color = red >This Demo and the attached files belong to course PSYO/NESC 3505 Neural Data Science, at Dalhousie University. You should not disseminate, distribute or copy. </font>
-# <br>https://dalpsychneuro.github.io/NESC_3505_textbook/intro.html
-# <br>© Copyright 2020.PSYO/NESC 3505 FAll 2020
-# <br>
-# **For demonstration purposes only**
+# <font color = red >This Demo and the attached files from course PSYO/NESC 3505 Neural Data Science, at Dalhousie University. You should not disseminate, distribute or copy. </font>
+# <br><font color = red >I am NOT post inappropriate or copyrighted content, advertise or promote outside products or organizations </font>
+# <br>© Copyright 2020.PSYO/NESC 3505 FAll 2020 https://dalpsychneuro.github.io/NESC_3505_textbook/intro.html
+# <br>**For demonstration purposes only**
 
 # ## Background
 # 
@@ -290,8 +289,13 @@ plt.show()
 # [3] [An Extensive Step by Step Guide to Exploratory Data Analysis](https://towardsdatascience.com/an-extensive-guide-to-exploratory-data-analysis-ddd99a03199e)
 
 # Based on assignment 3 <br>
-# <font color = red >This Demo and the attached files belong to course PSYO/ NESC 3505 Neural Data Science, at Dalhousie University. You should not disseminate, distribute or copy. </font>
-# <br>https://dalpsychneuro.github.io/NESC_3505_textbook/intro.html
-# <br>© Copyright 2020.PSYO/NESC 3505 FAll 2020
-# <br>
-# **For demonstration purposes only**
+# <font color = red >This Demo and the attached files from course PSYO/NESC 3505 Neural Data Science, at Dalhousie University. You should not disseminate, distribute or copy. </font>
+# <br><font color = red >I am NOT post inappropriate or copyrighted content, advertise or promote outside products or organizations </font>
+# <br>© Copyright 2020.PSYO/NESC 3505 FAll 2020 https://dalpsychneuro.github.io/NESC_3505_textbook/intro.html
+# <br>**For demonstration purposes only**
+
+# In[ ]:
+
+
+
+
