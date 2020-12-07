@@ -16,6 +16,7 @@
   sections:
     - file: demos/latex
     - file: demos/gitbook
+    - file: demos/seaborn
     
 - part: Others
   sections:
