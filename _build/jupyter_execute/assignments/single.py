@@ -208,7 +208,7 @@ plt.show()
 
 
 from IPython.display import IFrame
-IFrame('https://dalpsychneuro.github.io/NESC_3505_textbook/single_unit/ten_intensities.html', width=1000, height=450)
+IFrame('https://dalpsychneuro.github.io/NESC_3505_textbook/single_unit/ten_intensities.html', width=800, height=450)
 
 
 # Using nested list comprehension to create two columns: condition and contrast
