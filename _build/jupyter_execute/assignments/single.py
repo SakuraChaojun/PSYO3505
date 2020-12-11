@@ -204,6 +204,13 @@ plt.show()
 # 
 # ---Neural Data Science *Heat Maps, Interpolation, and Colour Map Choice*
 
+# In[37]:
+
+
+from IPython.display import IFrame
+IFrame('https://dalpsychneuro.github.io/NESC_3505_textbook/single_unit/ten_intensities.html', width=1000, height=450)
+
+
 # Using nested list comprehension to create two columns: condition and contrast
 
 # In[11]:
@@ -441,7 +448,7 @@ plt.show()
 # [2] NESC 3505 Neural Data Science, at Dalhousie University. Assignment 5
 # <br>
 
-# Based on assignment 5 <br>
+# Based on assignment 4 <br>
 # <font color = red >This Demo and the attached files from course PSYO/NESC 3505 Neural Data Science, at Dalhousie University. You should not disseminate, distribute or copy. </font>
 # <br><font color = red >I am NOT post inappropriate or copyrighted content, advertise or promote outside products or organizations </font>
 # <br>© Copyright 2020.PSYO/NESC 3505 FAll 2020 https://dalpsychneuro.github.io/NESC_3505_textbook/intro.html
