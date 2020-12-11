@@ -29,9 +29,9 @@ html:
   use_issues_button: false
   use_repository_button: true
   comments:
-    hypothesis: false
-    utterances:
-      repo: 'https://github.com/SakuraChaojun/PSYO3505'
+    hypothesis: true
+    utterances: false
+      #repo: 'https://github.com/SakuraChaojun/PSYO3505'
 
 
 google_analytics:

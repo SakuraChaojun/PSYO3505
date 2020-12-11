@@ -204,13 +204,6 @@ plt.show()
 # 
 # ---Neural Data Science *Heat Maps, Interpolation, and Colour Map Choice*
 
-# In[40]:
-
-
-from IPython.display import IFrame
-IFrame('https://dalpsychneuro.github.io/NESC_3505_textbook/single_unit/heat_maps.html', width=700, height=450)
-
-
 # Using nested list comprehension to create two columns: condition and contrast
 
 # In[11]:
