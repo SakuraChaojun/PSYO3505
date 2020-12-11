@@ -5,8 +5,6 @@ Jupyter allows you to write code, text, mathematical formula and pictures in the
 ## Latex Overview
 First of all, we need change the cell type to markdown. Because latex is not a programming language.
 
-<img src="https://raw.githubusercontent.com/SakuraChaojun/Neural-DataSci-Mybook/master/.gitbook/assets/image%20(1).png" alt="GitHub" title="GitHub,Social Coding" width="450px" height="100px" /> <br>
-
 Once the changes are completed, we can try to enter our first formula. Y=a+bx by typing
 ```
 $ y = a + b x $
@@ -55,7 +53,14 @@ $\overrightarrow{AB}*\vec A$
 
 For example, summation can be done using the \sum command, product operations can be done using \prod, and integration can be done using the \int command. Some examples are as follows
 
-<img src="https://raw.githubusercontent.com/SakuraChaojun/Neural-DataSci-Mybook/master/.gitbook/assets/image%20(2).png" alt="GitHub" title="GitHub,Social Coding" width="550px" height="300px" /> <br>
+|        |       |       |        |       |       | 
+|  ----  | ----  | ----  |  ----  | ----  | ----  |
+| \sum   | $\sum$ | \int | $\int$   | \bigcup|$ \bigcup$ |
+|  \sum_{i=1}^{N} |  $\sum_{i=1}^{N}$ | \int_{a}^{b} | $ \int_{a}^{b}$  | \bigcap | $\bigcap$ |
+| \prod   | $\prod$ | \iint | $\iint$   | x_{3} | $x_{3}$ |
+| \prod_{i=1}^{N}  | $\prod_{i=1}^{N}$ | \iint_{a}^{b} |$\iint_{a}^{b}$   | \lim_{x\to 0} | $\lim_{x\to 0}$  |
+
+
 
 Based on above details we can try to write a simple calculus formula
 
@@ -141,9 +146,6 @@ $
 Latex also has many more methods and techniques, but I will not elaborate on them in here because of space limitations. You can download above pdf like ‘cheat sheet’ for latex.
 
 In addition, I highly recommend a good online cooperative website 'overleaf' (Easy to use ,online and collaborative latex editor).  Unlike cocalc, this website focus on the academic paper (especially for science or engineering) writing. 
-
-```{tip} Using 'overleaf' to writing paper is a good way to improve your latex skills.
-```
 
 Cheers!
 
