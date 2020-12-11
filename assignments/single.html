@@ -1,0 +1,3234 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Single Unit Data and Spike Trains &#8212; PSYO3505 Portfolio</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Markdown Files" href="../markdown.html" />
+    <link rel="prev" title="MRI Image Analysis in Python" href="bioimage.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">PSYO3505 Portfolio</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="EDA.html">
+   Exploratory data analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="bioimage.html">
+   MRI Image Analysis in Python
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Single Unit Data and Spike Trains
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Projects
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks.html">
+   Content with notebooks
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Demos
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../demos/latex.html">
+   Writing Math Equations in Jupyter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../demos/gitbook.html">
+   Use Git book bulid your own page
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../demos/seaborn.html">
+   Data visualization with Seaborn
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Others
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks.html">
+   Content with notebooks
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  References
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../re.html">
+   References
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/assignments/single.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/SakuraChaojun/PSYO3505"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/SakuraChaojun/PSYO3505/main?urlpath=tree/docs/assignments/single.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#background">
+   Background
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-source">
+     Data Source
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#experimental-design">
+     Experimental Design
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#predictions">
+     Predictions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#single-neuron-data">
+   Single neuron data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#read-file-and-check-it">
+     Read file and check it
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualization">
+     Visualization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-multiple-neurons">
+   Working with multiple neurons
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Read file and check it
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Visualization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interpretation">
+   Interpretation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="single-unit-data-and-spike-trains">
+<h1>Single Unit Data and Spike Trains<a class="headerlink" href="#single-unit-data-and-spike-trains" title="Permalink to this headline">¶</a></h1>
+<p>Based on assignment 4<br>
+<font color = red >This Demo and the attached files from course PSYO/NESC 3505 Neural Data Science, at Dalhousie University. You should not disseminate, distribute or copy. </font>
+<br><font color = red >I am NOT post inappropriate or copyrighted content, advertise or promote outside products or organizations </font>
+<br>© Copyright 2020.PSYO/NESC 3505 FAll 2020 https://dalpsychneuro.github.io/NESC_3505_textbook/intro.html
+<br><strong>For demonstration purposes only</strong></p>
+<div class="section" id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="data-source">
+<h3>Data Source<a class="headerlink" href="#data-source" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>These data were provided courtesy of Dr. Nathan Crowder, Department of Psychology &amp; Neuroscience, Dalhousie University. Data are from 23 mouse primary visual cortex neurons; for simplicity we are going to work with data firstly from only one neuron, then we’ll load data from 3 neurons to get experience working with a larger data set. Note that these are not data from a multielectrode array. Data were recorded from single electrodes that were embedded directly into single neurons, a technique called patch clamping. We have data from multiple neurons because Dr. Crowder’s team painstakingly recorded from several neurons in each of a few animals.</p>
+</div></blockquote>
+<p>—–PSYO 3505 Assignment 4 cell1</p>
+</div>
+<div class="section" id="experimental-design">
+<h3>Experimental Design<a class="headerlink" href="#experimental-design" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>The experiment involved presenting drifting (oscillating) sine wave gratings to mice while recording from electrodes in the primary visual cortex. The gratings oscillated (drifted) at a speed of 2 Hz. The contrast of the stimuli were varied systematically over ten levels from 4 (virtually no contrast between the brightest and darkest parts of the sine wave grating, which would appear as uniform grey) to 100% (gratings varying between black and white, as in the example grating in the textbook). Contrast is therefore one of the experimental variables; the levels of contrast used were 4, 8, 12, 16, 24, 32, 48, 64, 84, and 100%.
+<br>
+<br>
+A second variable is condition:the stimuli were presented under 2 experimental conditions: control (CTRL) and adaptation (ADAPT):
+<br>
+<br>
+In the CTRL condition, each trial began with a 2000 ms blank grey screen, then the oscillating sine wave grating at the trial’s contrast level (see below) for 1000 ms, then 1000 ms blank grey screen.
+In the ADAPT condition, each trial started with the adaptation stimulus (a 50% contrast sine wave grating for 2000 ms), then the sine wave grating at the trial’s contrast level (see below), then 1000 ms blank grey screen.
+A total of 8 trials were presented at each contrast level, in each condition. Each trial was 4000 ms in duration, and data were sampled at 1000 Hz, meaning that we have a data point every 1 ms.</p>
+</div></blockquote>
+<p>—–PSYO 3505 Assignment 4 cell2</p>
+</div>
+<div class="section" id="predictions">
+<h3>Predictions<a class="headerlink" href="#predictions" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p>In the control condition, latency to first spike is expected to decrease with increasing contrast.</p></li>
+<li><p>Some primary visual cortex cells are phase sensitive (so-called simple cells), so in response to a drifting sine wave grating they will oscillate between excitation and inhibition at the same temporal frequency of the stimulus (2 Hz in this case).</p></li>
+</ul>
+</div></blockquote>
+<p>—–PSYO 3505 Assignment 4 cell3</p>
+</div>
+</div>
+<div class="section" id="single-neuron-data">
+<h2>Single neuron data<a class="headerlink" href="#single-neuron-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="read-file-and-check-it">
+<h3>Read file and check it<a class="headerlink" href="#read-file-and-check-it" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">b05d1717aef3</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>First of all we need define the experiment parameters</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Conditions</span>
+<span class="n">cond_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;CTRL&#39;</span><span class="p">,</span> <span class="s1">&#39;ADAPT&#39;</span><span class="p">]</span> 
+
+<span class="c1"># Labels for the levels of stimulus contrast</span>
+<span class="n">contr_labels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">84</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+
+<span class="c1"># Labels for repetitions (trials)</span>
+<span class="n">rep_labels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">num_reps</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">rep_labels</span><span class="p">)</span>
+
+<span class="c1"># Time point labels - each trial is 4000 ms long</span>
+<span class="n">time_labels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4000</span><span class="p">))</span>
+
+<span class="c1"># Stimulus timing</span>
+<span class="n">stim_on_time</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">stim_off_time</span> <span class="o">=</span> <span class="n">stim_on_time</span> <span class="o">+</span> <span class="mi">1000</span>
+
+<span class="n">adapt_on_time</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">adapt_off_time</span> <span class="o">=</span> <span class="n">adapt_on_time</span> <span class="o">+</span> <span class="mi">2000</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;crowder_1_neuron.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>neuron</th>
+      <th>time</th>
+      <th>repetition</th>
+      <th>contrast</th>
+      <th>condition</th>
+      <th>spike</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>m6_11</td>
+      <td>0</td>
+      <td>1</td>
+      <td>4</td>
+      <td>CTRL</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>m6_11</td>
+      <td>1</td>
+      <td>1</td>
+      <td>4</td>
+      <td>CTRL</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>m6_11</td>
+      <td>2</td>
+      <td>1</td>
+      <td>4</td>
+      <td>CTRL</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>m6_11</td>
+      <td>3</td>
+      <td>1</td>
+      <td>4</td>
+      <td>CTRL</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>m6_11</td>
+      <td>4</td>
+      <td>1</td>
+      <td>4</td>
+      <td>CTRL</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>neuron</th>
+      <th>time</th>
+      <th>repetition</th>
+      <th>contrast</th>
+      <th>condition</th>
+      <th>spike</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>639995</th>
+      <td>m6_11</td>
+      <td>3995</td>
+      <td>8</td>
+      <td>100</td>
+      <td>ADAPT</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>639996</th>
+      <td>m6_11</td>
+      <td>3996</td>
+      <td>8</td>
+      <td>100</td>
+      <td>ADAPT</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>639997</th>
+      <td>m6_11</td>
+      <td>3997</td>
+      <td>8</td>
+      <td>100</td>
+      <td>ADAPT</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>639998</th>
+      <td>m6_11</td>
+      <td>3998</td>
+      <td>8</td>
+      <td>100</td>
+      <td>ADAPT</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>639999</th>
+      <td>m6_11</td>
+      <td>3999</td>
+      <td>8</td>
+      <td>100</td>
+      <td>ADAPT</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>By using .unique() methods We can get idea about number of repertition and contrasts</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;repetition&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;contrast&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1 2 3 4 5 6 7 8]
+[  4   8  12  16  24  32  48  64  84 100]
+</pre></div>
+</div>
+</div>
+</div>
+<p>We want to know number of spikes in DF</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;spike&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1955
+</pre></div>
+</div>
+</div>
+</div>
+<p>Because the data is stored in the data frames, ‘Advanced indexing’ technique can apply here. like if I want to know the repetion 1 Contrast 100 CTRL and spike data I can write code like this :</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;repetition&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;contrast&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">100</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;condition&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;CTRL&#39;</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;spike&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>neuron</th>
+      <th>time</th>
+      <th>repetition</th>
+      <th>contrast</th>
+      <th>condition</th>
+      <th>spike</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>288797</th>
+      <td>m6_11</td>
+      <td>797</td>
+      <td>1</td>
+      <td>100</td>
+      <td>CTRL</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>290153</th>
+      <td>m6_11</td>
+      <td>2153</td>
+      <td>1</td>
+      <td>100</td>
+      <td>CTRL</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>290362</th>
+      <td>m6_11</td>
+      <td>2362</td>
+      <td>1</td>
+      <td>100</td>
+      <td>CTRL</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>290420</th>
+      <td>m6_11</td>
+      <td>2420</td>
+      <td>1</td>
+      <td>100</td>
+      <td>CTRL</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>290439</th>
+      <td>m6_11</td>
+      <td>2439</td>
+      <td>1</td>
+      <td>100</td>
+      <td>CTRL</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>290473</th>
+      <td>m6_11</td>
+      <td>2473</td>
+      <td>1</td>
+      <td>100</td>
+      <td>CTRL</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>290500</th>
+      <td>m6_11</td>
+      <td>2500</td>
+      <td>1</td>
+      <td>100</td>
+      <td>CTRL</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>290557</th>
+      <td>m6_11</td>
+      <td>2557</td>
+      <td>1</td>
+      <td>100</td>
+      <td>CTRL</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>290633</th>
+      <td>m6_11</td>
+      <td>2633</td>
+      <td>1</td>
+      <td>100</td>
+      <td>CTRL</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>290657</th>
+      <td>m6_11</td>
+      <td>2657</td>
+      <td>1</td>
+      <td>100</td>
+      <td>CTRL</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>290715</th>
+      <td>m6_11</td>
+      <td>2715</td>
+      <td>1</td>
+      <td>100</td>
+      <td>CTRL</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>290759</th>
+      <td>m6_11</td>
+      <td>2759</td>
+      <td>1</td>
+      <td>100</td>
+      <td>CTRL</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>290897</th>
+      <td>m6_11</td>
+      <td>2897</td>
+      <td>1</td>
+      <td>100</td>
+      <td>CTRL</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>291050</th>
+      <td>m6_11</td>
+      <td>3050</td>
+      <td>1</td>
+      <td>100</td>
+      <td>CTRL</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="visualization">
+<h3>Visualization<a class="headerlink" href="#visualization" title="Permalink to this headline">¶</a></h3>
+<p>This is a complex experiment so we’ll need lots of subplots to see all trials for all contrast levels, and both conditions. Here we can using Raster plots show the experitement</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">12</span><span class="p">,</span><span class="mi">18</span><span class="p">])</span>
+
+<span class="n">subplot_counter</span> <span class="o">=</span> <span class="mi">1</span> 
+
+<span class="k">for</span> <span class="n">contr</span> <span class="ow">in</span> <span class="n">contr_labels</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">cond</span> <span class="ow">in</span> <span class="n">cond_labels</span><span class="p">:</span>
+
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">contr_labels</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">cond_labels</span><span class="p">),</span> <span class="n">subplot_counter</span><span class="p">)</span>
+
+        <span class="c1"># Show adaptation grating at 50% contrast</span>
+        <span class="k">if</span> <span class="n">cond</span> <span class="o">==</span> <span class="s1">&#39;ADAPT&#39;</span><span class="p">:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">stim_on_time</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+
+        <span class="c1"># shading indicates stimulus on period</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">stim_on_time</span><span class="p">,</span> <span class="n">stim_off_time</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">contr</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">rep</span> <span class="ow">in</span> <span class="n">rep_labels</span><span class="p">:</span>
+            <span class="n">spike_times</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;repetition&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">rep</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;contrast&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">contr</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;condition&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">cond</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;spike&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">)][</span><span class="s1">&#39;time&#39;</span><span class="p">]</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">spike_times</span><span class="p">,</span> <span class="n">rep</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">rep</span><span class="p">);</span>
+
+        <span class="c1"># Pretty formatting</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">time_labels</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">rep_labels</span><span class="p">)])</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">cond</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">contr</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="si">% c</span><span class="s1">ontrast&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (ms)&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Repetition&#39;</span><span class="p">,)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_reps</span><span class="p">)],</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_reps</span><span class="p">)],</span> <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span> 
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+        <span class="n">subplot_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/single_23_0.png" src="../_images/single_23_0.png" />
+</div>
+</div>
+<p>Also, we can draw peri-stimulus time histogram (PTSH) plot rather than rasters. By summing the number of spikes in short time bins, PSTHs allow us to visualize when the neuron is most likely to spike.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hist_bin_width</span> <span class="o">=</span> <span class="mi">50</span> 
+<span class="n">time_bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">time_labels</span><span class="p">),</span> <span class="n">hist_bin_width</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">12</span><span class="p">,</span><span class="mi">18</span><span class="p">])</span>
+
+<span class="n">subplot_counter</span> <span class="o">=</span> <span class="mi">1</span> 
+
+<span class="k">for</span> <span class="n">contr</span> <span class="ow">in</span> <span class="n">contr_labels</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">cond</span> <span class="ow">in</span> <span class="n">cond_labels</span><span class="p">:</span>
+
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">contr_labels</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">cond_labels</span><span class="p">),</span> <span class="n">subplot_counter</span><span class="p">)</span>
+
+        <span class="c1"># Show adaptation grating at 50% contrast</span>
+        <span class="k">if</span> <span class="n">cond</span> <span class="o">==</span> <span class="s1">&#39;ADAPT&#39;</span><span class="p">:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">stim_on_time</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+            
+        <span class="c1"># shading indicates stimulus on period</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">stim_on_time</span><span class="p">,</span> <span class="n">stim_off_time</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">contr</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+        <span class="n">spike_times</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;contrast&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">contr</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;condition&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">cond</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;spike&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">)][</span><span class="s1">&#39;time&#39;</span><span class="p">]</span>
+        <span class="n">spike_count</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">spike_times</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">time_bins</span><span class="p">)</span>
+        <span class="n">spike_count</span> <span class="o">=</span> <span class="n">spike_count</span><span class="o">/</span><span class="p">(</span><span class="n">num_reps</span> <span class="o">*</span> <span class="n">hist_bin_width</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">bins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">spike_count</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="n">hist_bin_width</span><span class="p">)</span>
+        
+        <span class="c1"># Pretty formatting</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">time_labels</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">])</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">cond</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">contr</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="si">% c</span><span class="s1">ontrast&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (ms)&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Spike Probability&#39;</span><span class="p">)</span>
+        
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+        <span class="n">subplot_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/single_25_0.png" src="../_images/single_25_0.png" />
+</div>
+</div>
+<p>Next we try to plot heat map</p>
+<blockquote>
+<div><p>Like a PSTH, the heat map has time on the x axis, and plots the probability of spikes at each time point. However, the heat maps a more condensed, information-rich, and efficient version of the PSTHs: rather than needing 10 plots to show the histograms for all 10 levels of intensity.</p>
+</div></blockquote>
+<p>—Neural Data Science <em>Heat Maps, Interpolation, and Colour Map Choice</em></p>
+<p>Using nested list comprehension to create two columns: condition and contrast</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">condition_labels</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="n">cond</span><span class="p">,</span> <span class="n">contr</span><span class="p">]</span> <span class="k">for</span> <span class="n">cond</span> <span class="ow">in</span> <span class="n">cond_labels</span> <span class="k">for</span> <span class="n">contr</span> <span class="ow">in</span> <span class="n">contr_labels</span> <span class="p">],</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;condition&#39;</span><span class="p">,</span> <span class="s1">&#39;contrast&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">condition_labels</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>condition</th>
+      <th>contrast</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>CTRL</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>CTRL</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>CTRL</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>CTRL</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>CTRL</td>
+      <td>24</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">psth_df_list</span><span class="o">=</span><span class="p">[]</span>
+<span class="k">for</span> <span class="n">cond</span> <span class="ow">in</span> <span class="n">cond_labels</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">contr</span> <span class="ow">in</span> <span class="n">contr_labels</span><span class="p">:</span>
+        <span class="n">spike_times</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;contrast&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">contr</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;condition&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">cond</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;spike&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">)][</span><span class="s1">&#39;time&#39;</span><span class="p">]</span>
+        <span class="n">spike_count</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">spike_times</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">time_bins</span><span class="p">)</span>
+        <span class="n">psth_df_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">spike_count</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Combine labels and data</span>
+<span class="n">psth_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">condition_labels</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">psth_df_list</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>     
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">psth_df</span> <span class="o">=</span> <span class="n">psth_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;condition&#39;</span><span class="p">,</span><span class="s1">&#39;contrast&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Before the final plot, we need check the dataframe</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">psth_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>...</th>
+      <th>69</th>
+      <th>70</th>
+      <th>71</th>
+      <th>72</th>
+      <th>73</th>
+      <th>74</th>
+      <th>75</th>
+      <th>76</th>
+      <th>77</th>
+      <th>78</th>
+    </tr>
+    <tr>
+      <th>condition</th>
+      <th>contrast</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">CTRL</th>
+      <th>4</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 79 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">15</span><span class="p">,</span><span class="mi">30</span><span class="p">])</span>
+<span class="n">subplot_counter</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">for</span> <span class="n">cond</span> <span class="ow">in</span> <span class="n">cond_labels</span><span class="p">:</span>
+    
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">subplot_counter</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">psth_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cond</span><span class="p">],</span><span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;hot&#39;</span><span class="p">,</span><span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;bilinear&#39;</span><span class="p">,</span><span class="n">aspect</span> <span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">cond</span><span class="p">)</span>
+    <span class="n">xticks</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">time_bins</span><span class="p">),</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">xticks</span><span class="p">,</span>
+               <span class="n">time_bins</span><span class="p">[</span><span class="n">xticks</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (ms)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">contr_labels</span><span class="p">)],</span> 
+               <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">contr_labels</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">cond</span> <span class="o">==</span> <span class="n">cond_labels</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Stimulus Contrast&#39;</span><span class="p">)</span>
+
+    <span class="n">subplot_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/single_36_0.png" src="../_images/single_36_0.png" />
+</div>
+</div>
+<p>Additionally, the colour map parameter can be changed. Consider the colour-blindness and have good perceptually, like ‘viridis’below</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">15</span><span class="p">,</span><span class="mi">30</span><span class="p">])</span>
+<span class="n">subplot_counter</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># used to track subplots</span>
+
+<span class="k">for</span> <span class="n">cond</span> <span class="ow">in</span> <span class="n">cond_labels</span><span class="p">:</span>
+    
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">subplot_counter</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">psth_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cond</span><span class="p">],</span><span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span><span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;bilinear&#39;</span><span class="p">,</span><span class="n">aspect</span> <span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">cond</span><span class="p">)</span>
+    <span class="n">xticks</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">time_bins</span><span class="p">),</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">xticks</span><span class="p">,</span>
+               <span class="n">time_bins</span><span class="p">[</span><span class="n">xticks</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (ms)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">contr_labels</span><span class="p">)],</span> 
+               <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">contr_labels</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">cond</span> <span class="o">==</span> <span class="n">cond_labels</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Stimulus Contrast&#39;</span><span class="p">)</span>
+
+    <span class="n">subplot_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/single_38_0.png" src="../_images/single_38_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="working-with-multiple-neurons">
+<h2>Working with multiple neurons<a class="headerlink" href="#working-with-multiple-neurons" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Read file and check it<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;crowder_3_neurons.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df3</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>neuron</th>
+      <th>time</th>
+      <th>repetition</th>
+      <th>contrast</th>
+      <th>condition</th>
+      <th>spike</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>m1_6</td>
+      <td>0</td>
+      <td>1</td>
+      <td>4</td>
+      <td>CTRL</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>m1_6</td>
+      <td>1</td>
+      <td>1</td>
+      <td>4</td>
+      <td>CTRL</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>m1_6</td>
+      <td>2</td>
+      <td>1</td>
+      <td>4</td>
+      <td>CTRL</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>m1_6</td>
+      <td>3</td>
+      <td>1</td>
+      <td>4</td>
+      <td>CTRL</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>m1_6</td>
+      <td>4</td>
+      <td>1</td>
+      <td>4</td>
+      <td>CTRL</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df3</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>neuron</th>
+      <th>time</th>
+      <th>repetition</th>
+      <th>contrast</th>
+      <th>condition</th>
+      <th>spike</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1919995</th>
+      <td>m6_3a2</td>
+      <td>3995</td>
+      <td>8</td>
+      <td>100</td>
+      <td>ADAPT</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1919996</th>
+      <td>m6_3a2</td>
+      <td>3996</td>
+      <td>8</td>
+      <td>100</td>
+      <td>ADAPT</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1919997</th>
+      <td>m6_3a2</td>
+      <td>3997</td>
+      <td>8</td>
+      <td>100</td>
+      <td>ADAPT</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1919998</th>
+      <td>m6_3a2</td>
+      <td>3998</td>
+      <td>8</td>
+      <td>100</td>
+      <td>ADAPT</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1919999</th>
+      <td>m6_3a2</td>
+      <td>3999</td>
+      <td>8</td>
+      <td>100</td>
+      <td>ADAPT</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>In this case, we want to know how many neurons in the data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">neuron_labels</span> <span class="o">=</span> <span class="n">df3</span><span class="p">[</span><span class="s1">&#39;neuron&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">neuron_labels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;m1_6&#39; &#39;m3_11&#39; &#39;m6_3a2&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>Visualization<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Again, we create labels dataframe first</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">condition_labels</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="n">neur</span><span class="p">,</span><span class="n">cond</span><span class="p">,</span> <span class="n">contr</span><span class="p">]</span> <span class="k">for</span> <span class="n">neur</span> <span class="ow">in</span> <span class="n">neuron_labels</span> <span class="k">for</span> <span class="n">cond</span> <span class="ow">in</span> <span class="n">cond_labels</span> <span class="k">for</span> <span class="n">contr</span> <span class="ow">in</span> <span class="n">contr_labels</span> <span class="p">],</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;neuron&#39;</span><span class="p">,</span><span class="s1">&#39;condition&#39;</span><span class="p">,</span><span class="s1">&#39;contrast&#39;</span><span class="p">,])</span>
+<span class="n">condition_labels</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>neuron</th>
+      <th>condition</th>
+      <th>contrast</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>m1_6</td>
+      <td>CTRL</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>m1_6</td>
+      <td>CTRL</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>m1_6</td>
+      <td>CTRL</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>m1_6</td>
+      <td>CTRL</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>m1_6</td>
+      <td>CTRL</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>m1_6</td>
+      <td>CTRL</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>m1_6</td>
+      <td>CTRL</td>
+      <td>48</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>m1_6</td>
+      <td>CTRL</td>
+      <td>64</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>m1_6</td>
+      <td>CTRL</td>
+      <td>84</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>m1_6</td>
+      <td>CTRL</td>
+      <td>100</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Due to we have three neurons and each neruons has two conditions and 10 contrasts, we need douvle check it and make sure no error in here</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">condition_labels</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>neuron</th>
+      <th>condition</th>
+      <th>contrast</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>m1_6</td>
+      <td>CTRL</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>m1_6</td>
+      <td>CTRL</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>m1_6</td>
+      <td>CTRL</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>m1_6</td>
+      <td>CTRL</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>m1_6</td>
+      <td>CTRL</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>m1_6</td>
+      <td>CTRL</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>m1_6</td>
+      <td>CTRL</td>
+      <td>48</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>m1_6</td>
+      <td>CTRL</td>
+      <td>64</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>m1_6</td>
+      <td>CTRL</td>
+      <td>84</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>m1_6</td>
+      <td>CTRL</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>m1_6</td>
+      <td>ADAPT</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>m1_6</td>
+      <td>ADAPT</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>m1_6</td>
+      <td>ADAPT</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>m1_6</td>
+      <td>ADAPT</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>m1_6</td>
+      <td>ADAPT</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>m1_6</td>
+      <td>ADAPT</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>m1_6</td>
+      <td>ADAPT</td>
+      <td>48</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>m1_6</td>
+      <td>ADAPT</td>
+      <td>64</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>m1_6</td>
+      <td>ADAPT</td>
+      <td>84</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>m1_6</td>
+      <td>ADAPT</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>m3_11</td>
+      <td>CTRL</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>m3_11</td>
+      <td>CTRL</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>m3_11</td>
+      <td>CTRL</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>m3_11</td>
+      <td>CTRL</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>m3_11</td>
+      <td>CTRL</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>m3_11</td>
+      <td>CTRL</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>m3_11</td>
+      <td>CTRL</td>
+      <td>48</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>m3_11</td>
+      <td>CTRL</td>
+      <td>64</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>m3_11</td>
+      <td>CTRL</td>
+      <td>84</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>m3_11</td>
+      <td>CTRL</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>m3_11</td>
+      <td>ADAPT</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>m3_11</td>
+      <td>ADAPT</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>m3_11</td>
+      <td>ADAPT</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>m3_11</td>
+      <td>ADAPT</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>m3_11</td>
+      <td>ADAPT</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>m3_11</td>
+      <td>ADAPT</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>m3_11</td>
+      <td>ADAPT</td>
+      <td>48</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>m3_11</td>
+      <td>ADAPT</td>
+      <td>64</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>m3_11</td>
+      <td>ADAPT</td>
+      <td>84</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>m3_11</td>
+      <td>ADAPT</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>m6_3a2</td>
+      <td>CTRL</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>m6_3a2</td>
+      <td>CTRL</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>m6_3a2</td>
+      <td>CTRL</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>m6_3a2</td>
+      <td>CTRL</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>m6_3a2</td>
+      <td>CTRL</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>m6_3a2</td>
+      <td>CTRL</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>m6_3a2</td>
+      <td>CTRL</td>
+      <td>48</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>m6_3a2</td>
+      <td>CTRL</td>
+      <td>64</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>m6_3a2</td>
+      <td>CTRL</td>
+      <td>84</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>m6_3a2</td>
+      <td>CTRL</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>m6_3a2</td>
+      <td>ADAPT</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>m6_3a2</td>
+      <td>ADAPT</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>m6_3a2</td>
+      <td>ADAPT</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>m6_3a2</td>
+      <td>ADAPT</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>m6_3a2</td>
+      <td>ADAPT</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>m6_3a2</td>
+      <td>ADAPT</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>m6_3a2</td>
+      <td>ADAPT</td>
+      <td>48</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>m6_3a2</td>
+      <td>ADAPT</td>
+      <td>64</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>m6_3a2</td>
+      <td>ADAPT</td>
+      <td>84</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>m6_3a2</td>
+      <td>ADAPT</td>
+      <td>100</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>This time we no longer plot Raster or PTSH (actually we have 3 neurons * 2 conditions * 10 contrasts need 60 histograms !)instead Heat maps directly</p>
+<p>Reformat the data from raw data set</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">psth_df3_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">neuron</span> <span class="ow">in</span> <span class="n">neuron_labels</span><span class="p">:</span>
+     <span class="k">for</span> <span class="n">cond</span> <span class="ow">in</span> <span class="n">cond_labels</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">contr</span> <span class="ow">in</span> <span class="n">contr_labels</span><span class="p">:</span>
+            <span class="n">spike_times</span> <span class="o">=</span> <span class="n">df3</span><span class="p">[(</span><span class="n">df3</span><span class="p">[</span><span class="s1">&#39;neuron&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">neuron</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">df3</span><span class="p">[</span><span class="s1">&#39;contrast&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">contr</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">df3</span><span class="p">[</span><span class="s1">&#39;condition&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">cond</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">df3</span><span class="p">[</span><span class="s1">&#39;spike&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">)][</span><span class="s1">&#39;time&#39;</span><span class="p">]</span>
+            <span class="n">spike_count</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">spike_times</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="n">time_bins</span><span class="p">)</span>
+            <span class="n">psth_df3_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">spike_count</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Combine labels and data together </span>
+<span class="n">psth_df3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">condition_labels</span><span class="p">,</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">psth_df3_list</span><span class="p">)],</span><span class="n">axis</span> <span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">psth_df3</span> <span class="o">=</span> <span class="n">psth_df3</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;neuron&#39;</span><span class="p">,</span><span class="s1">&#39;condition&#39;</span><span class="p">,</span><span class="s1">&#39;contrast&#39;</span><span class="p">])</span>
+<span class="n">psth_df3</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>...</th>
+      <th>69</th>
+      <th>70</th>
+      <th>71</th>
+      <th>72</th>
+      <th>73</th>
+      <th>74</th>
+      <th>75</th>
+      <th>76</th>
+      <th>77</th>
+      <th>78</th>
+    </tr>
+    <tr>
+      <th>neuron</th>
+      <th>condition</th>
+      <th>contrast</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="20" valign="top">m1_6</th>
+      <th rowspan="10" valign="top">CTRL</th>
+      <th>4</th>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>4</td>
+      <td>0</td>
+      <td>1</td>
+      <td>4</td>
+      <td>...</td>
+      <td>0</td>
+      <td>2</td>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>4</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>3</td>
+      <td>5</td>
+      <td>2</td>
+      <td>1</td>
+      <td>5</td>
+      <td>2</td>
+      <td>...</td>
+      <td>1</td>
+      <td>3</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>3</td>
+      <td>2</td>
+      <td>4</td>
+      <td>3</td>
+      <td>5</td>
+      <td>1</td>
+      <td>...</td>
+      <td>2</td>
+      <td>4</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>2</td>
+      <td>5</td>
+      <td>0</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>5</td>
+      <td>1</td>
+      <td>4</td>
+      <td>5</td>
+      <td>3</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>...</td>
+      <td>3</td>
+      <td>3</td>
+      <td>1</td>
+      <td>3</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>5</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>4</td>
+      <td>2</td>
+      <td>12</td>
+      <td>5</td>
+      <td>1</td>
+      <td>...</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>3</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>1</td>
+      <td>3</td>
+      <td>3</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>2</td>
+      <td>5</td>
+      <td>5</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>3</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>...</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>0</td>
+      <td>3</td>
+      <td>4</td>
+      <td>3</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>2</td>
+      <td>6</td>
+      <td>0</td>
+      <td>3</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>1</td>
+      <td>5</td>
+      <td>1</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>4</td>
+      <td>3</td>
+      <td>1</td>
+      <td>3</td>
+      <td>1</td>
+      <td>3</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>100</th>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>3</td>
+      <td>3</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th rowspan="10" valign="top">ADAPT</th>
+      <th>4</th>
+      <td>4</td>
+      <td>0</td>
+      <td>13</td>
+      <td>4</td>
+      <td>17</td>
+      <td>10</td>
+      <td>14</td>
+      <td>16</td>
+      <td>10</td>
+      <td>9</td>
+      <td>...</td>
+      <td>0</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0</td>
+      <td>5</td>
+      <td>16</td>
+      <td>10</td>
+      <td>14</td>
+      <td>8</td>
+      <td>12</td>
+      <td>11</td>
+      <td>9</td>
+      <td>12</td>
+      <td>...</td>
+      <td>4</td>
+      <td>4</td>
+      <td>3</td>
+      <td>2</td>
+      <td>3</td>
+      <td>6</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>2</td>
+      <td>1</td>
+      <td>9</td>
+      <td>9</td>
+      <td>13</td>
+      <td>5</td>
+      <td>10</td>
+      <td>7</td>
+      <td>8</td>
+      <td>7</td>
+      <td>...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>3</td>
+      <td>6</td>
+      <td>14</td>
+      <td>11</td>
+      <td>16</td>
+      <td>11</td>
+      <td>12</td>
+      <td>9</td>
+      <td>10</td>
+      <td>11</td>
+      <td>...</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>0</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>3</td>
+      <td>6</td>
+      <td>13</td>
+      <td>10</td>
+      <td>17</td>
+      <td>12</td>
+      <td>9</td>
+      <td>13</td>
+      <td>10</td>
+      <td>6</td>
+      <td>...</td>
+      <td>0</td>
+      <td>2</td>
+      <td>3</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>1</td>
+      <td>2</td>
+      <td>12</td>
+      <td>7</td>
+      <td>11</td>
+      <td>11</td>
+      <td>9</td>
+      <td>11</td>
+      <td>8</td>
+      <td>7</td>
+      <td>...</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>1</td>
+      <td>4</td>
+      <td>12</td>
+      <td>7</td>
+      <td>15</td>
+      <td>14</td>
+      <td>11</td>
+      <td>14</td>
+      <td>11</td>
+      <td>9</td>
+      <td>...</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>1</td>
+      <td>1</td>
+      <td>14</td>
+      <td>7</td>
+      <td>14</td>
+      <td>13</td>
+      <td>10</td>
+      <td>9</td>
+      <td>8</td>
+      <td>8</td>
+      <td>...</td>
+      <td>0</td>
+      <td>3</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>4</td>
+      <td>2</td>
+      <td>18</td>
+      <td>10</td>
+      <td>14</td>
+      <td>8</td>
+      <td>6</td>
+      <td>10</td>
+      <td>11</td>
+      <td>7</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>100</th>
+      <td>1</td>
+      <td>5</td>
+      <td>11</td>
+      <td>9</td>
+      <td>9</td>
+      <td>8</td>
+      <td>11</td>
+      <td>9</td>
+      <td>11</td>
+      <td>8</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>20 rows × 79 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">psth_df3</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>...</th>
+      <th>69</th>
+      <th>70</th>
+      <th>71</th>
+      <th>72</th>
+      <th>73</th>
+      <th>74</th>
+      <th>75</th>
+      <th>76</th>
+      <th>77</th>
+      <th>78</th>
+    </tr>
+    <tr>
+      <th>neuron</th>
+      <th>condition</th>
+      <th>contrast</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="20" valign="top">m6_3a2</th>
+      <th rowspan="10" valign="top">CTRL</th>
+      <th>4</th>
+      <td>4</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>3</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>2</td>
+      <td>...</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>4</td>
+      <td>2</td>
+      <td>7</td>
+      <td>6</td>
+      <td>3</td>
+      <td>2</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>5</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>5</td>
+      <td>3</td>
+      <td>1</td>
+      <td>2</td>
+      <td>10</td>
+      <td>...</td>
+      <td>4</td>
+      <td>7</td>
+      <td>3</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>4</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>4</td>
+      <td>1</td>
+      <td>3</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>3</td>
+      <td>1</td>
+      <td>3</td>
+      <td>...</td>
+      <td>1</td>
+      <td>3</td>
+      <td>2</td>
+      <td>6</td>
+      <td>5</td>
+      <td>5</td>
+      <td>3</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>3</td>
+      <td>4</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>4</td>
+      <td>8</td>
+      <td>0</td>
+      <td>...</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>5</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>3</td>
+      <td>4</td>
+      <td>0</td>
+      <td>5</td>
+      <td>2</td>
+      <td>3</td>
+      <td>1</td>
+      <td>6</td>
+      <td>3</td>
+      <td>4</td>
+      <td>...</td>
+      <td>3</td>
+      <td>0</td>
+      <td>2</td>
+      <td>3</td>
+      <td>9</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>4</td>
+      <td>4</td>
+      <td>...</td>
+      <td>2</td>
+      <td>3</td>
+      <td>1</td>
+      <td>5</td>
+      <td>5</td>
+      <td>1</td>
+      <td>3</td>
+      <td>3</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>2</td>
+      <td>2</td>
+      <td>4</td>
+      <td>0</td>
+      <td>7</td>
+      <td>3</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>...</td>
+      <td>1</td>
+      <td>3</td>
+      <td>3</td>
+      <td>0</td>
+      <td>6</td>
+      <td>5</td>
+      <td>4</td>
+      <td>6</td>
+      <td>0</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>4</td>
+      <td>4</td>
+      <td>6</td>
+      <td>3</td>
+      <td>4</td>
+      <td>0</td>
+      <td>7</td>
+      <td>3</td>
+      <td>2</td>
+      <td>5</td>
+      <td>...</td>
+      <td>2</td>
+      <td>3</td>
+      <td>0</td>
+      <td>3</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>4</td>
+      <td>0</td>
+      <td>2</td>
+      <td>4</td>
+      <td>6</td>
+      <td>4</td>
+      <td>7</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>3</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>100</th>
+      <td>7</td>
+      <td>4</td>
+      <td>0</td>
+      <td>3</td>
+      <td>4</td>
+      <td>2</td>
+      <td>9</td>
+      <td>4</td>
+      <td>2</td>
+      <td>4</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th rowspan="10" valign="top">ADAPT</th>
+      <th>4</th>
+      <td>0</td>
+      <td>0</td>
+      <td>11</td>
+      <td>11</td>
+      <td>13</td>
+      <td>15</td>
+      <td>21</td>
+      <td>12</td>
+      <td>12</td>
+      <td>12</td>
+      <td>...</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>5</td>
+      <td>3</td>
+      <td>1</td>
+      <td>4</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>3</td>
+      <td>3</td>
+      <td>18</td>
+      <td>12</td>
+      <td>12</td>
+      <td>14</td>
+      <td>18</td>
+      <td>13</td>
+      <td>7</td>
+      <td>10</td>
+      <td>...</td>
+      <td>4</td>
+      <td>1</td>
+      <td>2</td>
+      <td>6</td>
+      <td>9</td>
+      <td>3</td>
+      <td>2</td>
+      <td>3</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>7</td>
+      <td>5</td>
+      <td>16</td>
+      <td>5</td>
+      <td>12</td>
+      <td>21</td>
+      <td>18</td>
+      <td>15</td>
+      <td>12</td>
+      <td>9</td>
+      <td>...</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>4</td>
+      <td>5</td>
+      <td>17</td>
+      <td>6</td>
+      <td>21</td>
+      <td>14</td>
+      <td>13</td>
+      <td>19</td>
+      <td>10</td>
+      <td>13</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>4</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>5</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>6</td>
+      <td>7</td>
+      <td>13</td>
+      <td>7</td>
+      <td>10</td>
+      <td>21</td>
+      <td>10</td>
+      <td>19</td>
+      <td>9</td>
+      <td>8</td>
+      <td>...</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>1</td>
+      <td>5</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>1</td>
+      <td>0</td>
+      <td>10</td>
+      <td>15</td>
+      <td>10</td>
+      <td>13</td>
+      <td>19</td>
+      <td>12</td>
+      <td>12</td>
+      <td>6</td>
+      <td>...</td>
+      <td>2</td>
+      <td>0</td>
+      <td>3</td>
+      <td>1</td>
+      <td>3</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>2</td>
+      <td>2</td>
+      <td>18</td>
+      <td>9</td>
+      <td>15</td>
+      <td>12</td>
+      <td>21</td>
+      <td>22</td>
+      <td>12</td>
+      <td>8</td>
+      <td>...</td>
+      <td>5</td>
+      <td>2</td>
+      <td>2</td>
+      <td>4</td>
+      <td>3</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>2</td>
+      <td>6</td>
+      <td>8</td>
+      <td>10</td>
+      <td>19</td>
+      <td>16</td>
+      <td>18</td>
+      <td>15</td>
+      <td>9</td>
+      <td>18</td>
+      <td>...</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>6</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>1</td>
+      <td>1</td>
+      <td>11</td>
+      <td>7</td>
+      <td>9</td>
+      <td>16</td>
+      <td>12</td>
+      <td>11</td>
+      <td>12</td>
+      <td>7</td>
+      <td>...</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>4</td>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>100</th>
+      <td>1</td>
+      <td>2</td>
+      <td>10</td>
+      <td>11</td>
+      <td>16</td>
+      <td>20</td>
+      <td>19</td>
+      <td>11</td>
+      <td>15</td>
+      <td>15</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>2</td>
+      <td>2</td>
+      <td>3</td>
+      <td>3</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>20 rows × 79 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">])</span>
+<span class="n">subplot_counter</span> <span class="o">=</span> <span class="mi">1</span> 
+
+<span class="k">for</span> <span class="n">neuron</span> <span class="ow">in</span> <span class="n">neuron_labels</span><span class="p">:</span>
+      <span class="k">for</span> <span class="n">cond</span> <span class="ow">in</span> <span class="n">cond_labels</span><span class="p">:</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">subplot_counter</span><span class="p">)</span>
+
+        <span class="n">data</span> <span class="o">=</span> <span class="n">psth_df3</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">neuron</span><span class="p">]</span>
+        
+        <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cond</span><span class="p">],</span><span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;jet&#39;</span><span class="p">,</span><span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;bilinear&#39;</span><span class="p">,</span><span class="n">aspect</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+
+        
+        <span class="c1"># Nice formatting</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Neuron &#39;</span> <span class="o">+</span> <span class="n">neuron</span> <span class="o">+</span> <span class="s1">&#39;: &#39;</span> <span class="o">+</span> <span class="n">cond</span><span class="p">)</span>
+
+        <span class="n">xticks</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">time_bins</span><span class="p">),</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">xticks</span><span class="p">,</span><span class="n">time_bins</span><span class="p">[</span><span class="n">xticks</span><span class="p">])</span>
+        
+        <span class="k">if</span> <span class="n">neuron</span> <span class="o">==</span> <span class="n">neuron_labels</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (ms)&#39;</span><span class="p">)</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">contr_labels</span><span class="p">)],</span> 
+                   <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">contr_labels</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="n">cond</span> <span class="o">==</span> <span class="n">cond_labels</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Stimulus Contrast&#39;</span><span class="p">)</span>
+        <span class="n">subplot_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/single_56_0.png" src="../_images/single_56_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="interpretation">
+<h2>Interpretation<a class="headerlink" href="#interpretation" title="Permalink to this headline">¶</a></h2>
+<p>According to above heat maps, there are relationship between spike rate (increase) and stimulus onset (regardless of contrast level). Specifically, in m1-6 neuron CTRL condition the ‘hot spot’ is between 2000-2500 (approximately) ms. In m3-11 neuron CTRL condition the ‘hot spot’ is between 2000-2600 (approximately) ms. In m6-3a2 neuron CTRL condition the ‘hot spot is between 2000-3000 (approximately) ms. And this experiment stimulus onset was at 2000ms.
+<br>
+<br>
+The PTSH graph suggests that 2100 ms at 24% contrast, 2300 at 32%, 2100 at 64%, 2050 at 84%, and 2100 at 100% in the control condition, these number not support the prediction:</p>
+<ul class="simple">
+<li><p><em>in the control condition, latency to first spike is expected to decrease with increasing contrast</em></p></li>
+</ul>
+<p>It is remarkable that In the adaptation condition the neurons do not show a similar or systematic response to the onset of the “main” stimulus (the one that starts at 2000 ms) as in the control condition. The reason is neuronal ‘habituation (or desensitization)’ probably, namely, The neuron will not stimulus again under similar contrasts.</p>
+<p>Additionally, With the contrast increase i.e., from 32% to 100%. the spike rate ‘density’ has significant increase. For example, like above heat maps, neuron m3-11 CTRL, from 48% to 100% the ‘hot spot’ area is larger than other stimulus contrast. Same thing we can found in other two neurons.</p>
+<p>Neuron m6_3a2 behavior like simple cells, (response to a drifting sine wave grating they will oscillate between excitation and inhibition at the same temporal frequency of the stimulus), We can observe this phenomenon through heatmaps Neuron m6_3a2: ADAPT . About 100ms excitation then inhibition after 500ms, next 800ms excitation 1000ms inhibition, 1300ms excitation 1400 ms inhibition and so on. Therefore these number support the prediction:</p>
+<ul class="simple">
+<li><p><em>Some primary visual cortex cells are phase sensitive (so-called simple cells), so in response to a drifting sine wave grating they will oscillate between excitation and inhibition at the same temporal frequency of the stimulus (2 Hz in this case,2 Hz means two peaks per second).</em></p></li>
+</ul>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p>[1] <a class="reference external" href="https://dalpsychneuro.github.io/NESC_3505_textbook/intro.html">NESC 3505 Neural Data Science, at Dalhousie University. Textbook</a>
+<br>
+[2] NESC 3505 Neural Data Science, at Dalhousie University. Assignment 5
+<br></p>
+<p>Based on assignment 5 <br>
+<font color = red >This Demo and the attached files from course PSYO/NESC 3505 Neural Data Science, at Dalhousie University. You should not disseminate, distribute or copy. </font>
+<br><font color = red >I am NOT post inappropriate or copyrighted content, advertise or promote outside products or organizations </font>
+<br>© Copyright 2020.PSYO/NESC 3505 FAll 2020 https://dalpsychneuro.github.io/NESC_3505_textbook/intro.html
+<br><strong>For demonstration purposes only</strong></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./assignments"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="bioimage.html" title="previous page">MRI Image Analysis in Python</a>
+    <a class='right-next' id="next-link" href="../markdown.html" title="next page">Markdown Files</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Chaojun Ma<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
