@@ -204,11 +204,11 @@ plt.show()
 # 
 # ---Neural Data Science *Heat Maps, Interpolation, and Colour Map Choice*
 
-# In[37]:
+# In[40]:
 
 
 from IPython.display import IFrame
-IFrame('https://dalpsychneuro.github.io/NESC_3505_textbook/single_unit/ten_intensities.html', width=800, height=450)
+IFrame('https://dalpsychneuro.github.io/NESC_3505_textbook/single_unit/heat_maps.html', width=700, height=450)
 
 
 # Using nested list comprehension to create two columns: condition and contrast
@@ -392,7 +392,7 @@ psth_df3.head(20)
 psth_df3.tail(20)
 
 
-# In[35]:
+# In[42]:
 
 
 fig = plt.figure(figsize=[15,15])
@@ -404,7 +404,7 @@ for neuron in neuron_labels:
 
         data = psth_df3.loc[neuron]
         
-        plt.imshow(data.loc[cond],origin='lower',cmap='jet',interpolation='bilinear',aspect = 5)
+        plt.imshow(data.loc[cond],origin='lower',cmap='viridis',interpolation='bilinear',aspect = 5)
 
         
         # Nice formatting

@@ -55,6 +55,7 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/logo_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Markdown Files" href="../markdown.html" />
@@ -77,7 +78,7 @@
         <div class="navbar-brand-box">
 <a class="navbar-brand text-wrap" href="../index.html">
   
-  <img src="../_static/logo.png" class="logo" alt="logo">
+  <img src="../_static/logo_icon.png" class="logo" alt="logo">
   
   
   <h1 class="site-logo" id="site-title">PSYO3505 Portfolio</h1>
@@ -916,16 +917,16 @@ A total of 8 trials were presented at each contrast level, in each condition. Ea
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
-<span class="n">IFrame</span><span class="p">(</span><span class="s1">&#39;https://dalpsychneuro.github.io/NESC_3505_textbook/single_unit/ten_intensities.html&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">450</span><span class="p">)</span>
+<span class="n">IFrame</span><span class="p">(</span><span class="s1">&#39;https://dalpsychneuro.github.io/NESC_3505_textbook/single_unit/heat_maps.html&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">700</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">450</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
 <iframe
-    width="1000"
+    width="700"
     height="450"
-    src="https://dalpsychneuro.github.io/NESC_3505_textbook/single_unit/ten_intensities.html"
+    src="https://dalpsychneuro.github.io/NESC_3505_textbook/single_unit/heat_maps.html"
     frameborder="0"
     allowfullscreen
 ></iframe>
@@ -3136,7 +3137,7 @@ A total of 8 trials were presented at each contrast level, in each condition. Ea
 
         <span class="n">data</span> <span class="o">=</span> <span class="n">psth_df3</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">neuron</span><span class="p">]</span>
         
-        <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cond</span><span class="p">],</span><span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;jet&#39;</span><span class="p">,</span><span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;bilinear&#39;</span><span class="p">,</span><span class="n">aspect</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cond</span><span class="p">],</span><span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span><span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;bilinear&#39;</span><span class="p">,</span><span class="n">aspect</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
 
         
         <span class="c1"># Nice formatting</span>

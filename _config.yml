@@ -3,7 +3,7 @@
 
 title: PSYO3505 Portfolio
 author: Chaojun Ma
-logo: logo.png
+logo: 'images/logo_icon.png'
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -24,5 +24,6 @@ repository:
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
+  favicon: 'images/logo_icon.png'
   use_issues_button: false
   use_repository_button: true
