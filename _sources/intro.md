@@ -7,16 +7,5 @@ structured.
 Check out the content pages bundled with this sample book to get started.
 
 
-% This HTML activates utterances only on this page
-```{raw} html
-<script
-   type="text/javascript"
-   src="https://utteranc.es/client.js"
-   async="async"
-   repo="SakuraChaojun/PSYO3505"
-   issue-term="pathname"
-   theme="github-light"
-   label="💬 comment"
-   crossorigin="anonymous"
-/>
+```{tip} 'Hypothesis' is activated on all pages. You can see the web overlay by clicking on the '<' button in the upper-right corner of this page. You can give me any comments on pages, I will reply you ASAP.
 ```
