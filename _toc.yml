@@ -6,6 +6,7 @@
   sections:
     - file: assignments/EDA
     - file: assignments/bioimage
+    - file: assignments/single
     
 - part: Projects
   sections:
