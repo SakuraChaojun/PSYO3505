@@ -18,6 +18,7 @@
     - file: demos/latex
     - file: demos/gitbook
     - file: demos/seaborn
+    - file: demos/interact
     
 - part: Others
   sections:
