@@ -7,38 +7,41 @@
 
 # So far, there are three popular interactive visualization Python packages: [Altair](https://altair-viz.github.io/getting_started/overview.html), [Bokeh](https://docs.bokeh.org/en/latest/index.html), and [Plotly](https://plotly.com/python/getting-started/#JupyterLab-Support-(Python-3.5+)). For the convenience of use, I will mainly introduce Bokeh and Plotly in following parts. 
 
+# ```{tip} Hypothesis is activated on this page. You can see the web overlay by clicking on the < button in the upper-right corner of this page. You can give me any comments on pages
 # 
+# ```
 
 # In[1]:
 
 
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 
 
 # ## Read file and check it
 
 # This time I am not using pd.read_csv method instead input file from bokeh package directly. Therefore, you can download my notebook and run it in your own jupyter notebook.
 
-# In[16]:
+# In[2]:
 
 
 from bokeh.sampledata.iris import flowers
 
 
-# In[17]:
+# In[3]:
 
 
 flowers.head()
 
 
-# In[18]:
+# In[4]:
 
 
 print(flowers['species'].unique())
 
 
-# In[19]:
+# In[5]:
 
 
 flowers.info()
@@ -48,7 +51,7 @@ flowers.info()
 
 # Unlike numpy or pandas, bokeh has kinds of different functions. We cannot import all in one time. Therefore, in next steps, we import package only we need it. 
 
-# In[22]:
+# In[6]:
 
 
 from bokeh.plotting import figure, show, output_notebook
@@ -60,7 +63,7 @@ output_notebook()
 
 # It should be noted that the data frame cannot pass to bokeh directly, bokeh accepts ‘Column data source’ commonly. (String column names corresponding to the data) 
 
-# In[21]:
+# In[7]:
 
 
 # Here is Column data source
@@ -74,7 +77,7 @@ source.data
 
 # First, we just plot the iris data and see what happens
 
-# In[24]:
+# In[8]:
 
 
 plot = figure (x_axis_label = 'patal_length', y_axis_label = 'sepal_length')
@@ -86,7 +89,7 @@ show(plot)
 
 # This is my graffiti
 
-# In[25]:
+# In[9]:
 
 
 x = [3,5,0,5]
@@ -100,7 +103,7 @@ show(plot)
 
 # We need to reload the plot for the following steps 
 
-# In[26]:
+# In[10]:
 
 
 plot = figure (x_axis_label = 'patal_length', y_axis_label = 'sepal_length')
@@ -109,7 +112,7 @@ plot.circle(flowers['petal_length'],flowers['sepal_length'])
 
 # Without show() the 'glyphs' will not display, because 'plot' is a speical object
 
-# In[27]:
+# In[11]:
 
 
 type(plot)
@@ -117,13 +120,13 @@ type(plot)
 
 # Now, we can map the different species to a different colour, to do this we need to import *CategoricalColorMapper* and create a mapper
 
-# In[35]:
+# In[12]:
 
 
 plot = figure()
 
 
-# In[36]:
+# In[13]:
 
 
 # import package 
@@ -143,7 +146,7 @@ show(plot)
 
 # Also, We can add hover to 'glyphs' and let us look at each point values specifically. Import *HoverTool* and create hover 
 
-# In[37]:
+# In[14]:
 
 
 from bokeh.models import HoverTool
@@ -161,7 +164,7 @@ show(plot)
 
 # Like matplotlib, Bokeh accepts ‘subplot’ to generates multiple ‘glyphs’ in one output. Here we use gridplot package 
 
-# In[41]:
+# In[15]:
 
 
 from bokeh.layouts import gridplot
@@ -181,17 +184,17 @@ plot2.add_tools(hover)
 layout = gridplot([[plot1,None],[plot2,None]])
 
 
-# In[42]:
+# In[16]:
 
 
 show(layout)
 
 
-# ### Interactive apps with Bokeh 
+# ### Interactive app with Bokeh 
 
 # We can even use Bokeh to make a small app, following codes from Github. Unfortunately, 'jupyter book'(Note not 'jupyter notebook') not support callback function, so this app cannot be running here, you can download the file and run it on your machine.
 
-# In[13]:
+# In[17]:
 
 
 from bokeh.layouts import column
@@ -205,7 +208,7 @@ from bokeh.sampledata.sea_surface_temperature import sea_surface_temperature
 
 # Callback function is very important here because when the user adjusts the slider, the 'glyphs' must update. call back monitors the change and pass the peremeter to the main function. 
 
-# In[45]:
+# In[18]:
 
 
 #main function 
@@ -238,11 +241,15 @@ def bkapp(doc):
 show(bkapp)    
 
 
-# 
+# If you run this code on your jupyter notebook, the output should like following 
+
+# <img src="https://raw.githubusercontent.com/SakuraChaojun/Neural-DataSci-Mybook/main/.gitbook/assets/2020-12-14%2002.12.18.gif" alt="GitHub" title="GitHub,Social Coding" width="750px" height="430px" /> <br>
 
 # ## Visualization with Plotly
 
-# In[15]:
+# Then, We plot the same data using Plotly, again we need to import the relative package first.
+
+# In[19]:
 
 
 import plotly.io as pio
@@ -253,7 +260,11 @@ figure = px.scatter(flowers, x="sepal_width", y="sepal_length", color="species",
 figure
 
 
-# In[14]:
+# Unlike Bokeh, Plotly needs only one line code that can implement hover, mapper and background features. But Plotly has an obvious downside. We need to spend more time waiting for the load.
+
+# Additionally, Plotly has a function to show the table, like data frame.
+
+# In[20]:
 
 
 import plotly.figure_factory as ff
@@ -262,28 +273,38 @@ import pandas as pd
 table = ff.create_table(flowers[:5])
 
 
-# In[15]:
+# In[21]:
 
 
 table
 
 
-# ### Interactive apps with Plotly
+# The main difference is that if you sign up for a Plotly account, you can even change the numbers directly on the table. In other words this is an interactive table
 
-# In[52]:
+# ### Interactive app with Plotly
+
+# In general, MRI images are analyzed by [slice the image](https://sakurachaojun.github.io/PSYO3505/assignments/bioimage.html#visualization), which is not intuitive and quite complicated. Is there any other way? Here, Plotly can directly generate interactively, ‘real-time’ images.
+
+# We import data from datacamp
+
+# In[27]:
 
 
 import matplotlib.pyplot as plt
 vol = io.imread("https://s3.amazonaws.com/assets.datacamp.com/blog_assets/attention-mri.tif")
 
 
-# In[53]:
+# Check the shape and get an idea of how many slices in this file
+
+# In[28]:
 
 
 vol.shape
 
 
-# In[67]:
+# like our [assignment 5](https://sakurachaojun.github.io/PSYO3505/assignments/bioimage.html#), we can 'slice' the image to view 
+
+# In[29]:
 
 
 plt.imshow(vol[:,:,50],cmap = 'gray') 
@@ -291,7 +312,9 @@ plt.axis('off')
 plt.show()
 
 
-# In[70]:
+# Same idea in here. We use [subplot methods](https://sakurachaojun.github.io/PSYO3505/assignments/bioimage.html#visualization) to visualize some slices through the brain volume.
+
+# In[30]:
 
 
 fig = plt.figure(figsize=[8, 12])
@@ -308,9 +331,12 @@ for i in range (0,157,10):
 plt.show()
 
 
-# 
+# By using Plotly to 'slice' the image, we can get interactive 'brain'
 
-# In[ ]:
+# ```{note} If the following code cannot running on the page, please download the file and run it on your machine
+# ```
+
+# In[31]:
 
 
 # From: https://plotly.com/python/visualizing-mri-volume-slices/
@@ -402,25 +428,43 @@ fig.update_layout(
          sliders=sliders
 )
 
-#fig.show()
+fig.show()
 
 
-# ## References
+# It should be noted that generating this interactive image requires a lot of computational resources
 
-# In[ ]:
+# In general, Bokeh consumes fewer resources but does not have as many functions and needs the user to add by themselves. Plotly is powerful but resource-intensive and slows down the system. We need to decide which one is more appropriate depending on the project.
 
+# I haven't introduced [Altair](https://altair-viz.github.io/getting_started/overview.html) here because it doesn't have any particular advantages or disadvantages compared to the other two Python packages. I rarely use this personally, but if you want to learn more, please refer to the documentation below.
 
+# ## References and documents
 
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
+# [1] [jupyter book manual](https://jupyterbook.org/start/overview.html)
+# <br>
+# [2] [Interactive Data Visualization with Bokeh: an INTERACTIVE COURSE, DataCamp](https://learn.datacamp.com/courses/interactive-data-visualization-with-bokeh)
+# <br>
+# [3] [Altair: Declarative Visualization in Python](https://altair-viz.github.io/index.html#altair-declarative-visualization-in-python)
+# <br>
+# [4] [Bokeh: an interactive visualization library for modern web browsers](https://docs.bokeh.org/en/latest/index.html)
+# <br>
+# [5] [Plotly: Jupyter Notebook Tutorial in Python](https://plotly.com/python/ipython-notebook-tutorial/#introduction)
+# <br>
+# [6] [NESC 3505 Neural Data Science, at Dalhousie University. Textbook](https://dalpsychneuro.github.io/NESC_3505_textbook/intro.html)
+# <br>
+# [7] [NESC 3505 Neural Data Science, at Dalhousie University. Assignment 5](https://sakurachaojun.github.io/PSYO3505/assignments/bioimage.html)
+# <br>
+# [8] [Biomedical Image Analysis in Python: an INTERACTIVE COURSE, DataCamp](https://learn.datacamp.com/courses/biomedical-image-analysis-in-python)
+# <br>
+# [9] [Bokeh Server Applications](https://github.com/bokeh/bokeh/blob/2.2.3/examples/howto/server_embed/notebook_embed.ipynb)
+# <br>
+# [10] [iris data from Bokeh sample data set](https://github.com/bokeh/bokeh/blob/branch-2.3/bokeh/sampledata/_data/iris.csv)
+# <br>
+# [11] [MRI data from dataCamp](https://learn.datacamp.com/courses/biomedical-image-analysis-in-python)
+# <br>
+# [12] [Jupyter Notebook Users Manual](https://jupyter.brynmawr.edu/services/public/dblank/Jupyter%20Notebook%20Users%20Manual.ipynb)
+# <br>
+# [13] [CoCalc Manual documentation](https://doc.cocalc.com)
+# <br>
+# [14] [6 Essential Data Visualization Python Libraries](https://www.analyticsvidhya.com/blog/2020/03/6-data-visualization-python-libraries/)
+# <br>
+# [15] [MRI image analysis methods and applications: an algorithmic perspective using brain tumors as an exemplar](https://academic.oup.com/noa/article/2/1/vdaa049/5819744)
