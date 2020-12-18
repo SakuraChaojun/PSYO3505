@@ -250,7 +250,10 @@
             href="https://github.com/SakuraChaojun/PSYO3505"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
-        
+        <a class="issues-button"
+            href="https://github.com/SakuraChaojun/PSYO3505/issues/new?title=Issue%20on%20page%20%2Fassignments/bioimage.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
     </div>
 </div>
@@ -396,20 +399,6 @@
 <span class="kn">import</span> <span class="nn">nibabel</span> <span class="k">as</span> <span class="nn">nib</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">e75c220dfee0</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">imageio</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">scipy.ndimage</span> <span class="k">as</span> <span class="nn">ndi</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">scipy.stats</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">nibabel</span> <span class="k">as</span> <span class="nn">nib</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;imageio&#39;
 </pre></div>
 </div>
 </div>
@@ -665,6 +654,7 @@ Reading DICOM (examining files): 1/161 files (0.6%)
 <img alt="../_images/bioimage_32_0.png" src="../_images/bioimage_32_0.png" />
 </div>
 </div>
+<p>Here we have other way: <a class="reference external" href="https://sakurachaojun.github.io/PSYO3505/demos/interact.html#interactive-app-with-plotly">Plotly</a> can directly generate interactively, ‘real-time’ images.</p>
 <blockquote>
 <div><p>Another cool thing we can do with a 3D image is visualize a slice in some other dimension. That is, although the image was aquired as 160 slices in the axial plane, we can “reslice” the image to view the image from a different perspective.</p>
 </div></blockquote>
@@ -678,7 +668,7 @@ Reading DICOM (examining files): 1/161 files (0.6%)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bioimage_34_0.png" src="../_images/bioimage_34_0.png" />
+<img alt="../_images/bioimage_35_0.png" src="../_images/bioimage_35_0.png" />
 </div>
 </div>
 <p>By using rorate methods, turn the image right side up for the plot</p>
@@ -691,7 +681,7 @@ Reading DICOM (examining files): 1/161 files (0.6%)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bioimage_36_0.png" src="../_images/bioimage_36_0.png" />
+<img alt="../_images/bioimage_37_0.png" src="../_images/bioimage_37_0.png" />
 </div>
 </div>
 <br></div>
@@ -850,7 +840,7 @@ Min z value = -5.96
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">26</span><span class="p">,</span><span class="mi">3</span><span class="p">):</span>
     <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">subplot_counter</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">fmri_zstat_data</span><span class="p">[</span><span class="n">i</span><span class="p">,:,:],</span><span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">fmri_zstat_data</span><span class="p">[:,:,</span><span class="n">i</span><span class="p">],</span><span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span> 
     <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
     
     <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
@@ -861,7 +851,7 @@ Min z value = -5.96
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bioimage_53_0.png" src="../_images/bioimage_53_0.png" />
+<img alt="../_images/bioimage_54_0.png" src="../_images/bioimage_54_0.png" />
 </div>
 </div>
 <blockquote>
@@ -880,7 +870,7 @@ We also provide the arguments vmin and vmax to the plot command, to set the uppe
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">26</span><span class="p">,</span><span class="mi">3</span><span class="p">):</span>
     <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">subplot_counter</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">fmri_zstat_data</span><span class="p">[</span><span class="n">i</span><span class="p">,:,:],</span><span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;seismic&#39;</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span> <span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">fmri_zstat_data</span><span class="p">[:,:,</span><span class="n">i</span><span class="p">],</span><span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;seismic&#39;</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span> <span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span> 
     <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
     
     <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
@@ -891,7 +881,7 @@ We also provide the arguments vmin and vmax to the plot command, to set the uppe
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bioimage_55_0.png" src="../_images/bioimage_55_0.png" />
+<img alt="../_images/bioimage_56_0.png" src="../_images/bioimage_56_0.png" />
 </div>
 </div>
 </div>
@@ -926,7 +916,7 @@ scipy.stats provides a convenient function to determine the Z value correspondin
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">26</span><span class="p">,</span><span class="mi">3</span><span class="p">):</span>
     <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">subplot_counter</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">thresh_zstat</span><span class="p">[</span><span class="n">i</span><span class="p">,:,:],</span><span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;seismic&#39;</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span> <span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">thresh_zstat</span><span class="p">[:,:,</span><span class="n">i</span><span class="p">],</span><span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;seismic&#39;</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span> <span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span> 
     <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
     
     <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
@@ -937,7 +927,7 @@ scipy.stats provides a convenient function to determine the Z value correspondin
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bioimage_60_0.png" src="../_images/bioimage_60_0.png" />
+<img alt="../_images/bioimage_61_0.png" src="../_images/bioimage_61_0.png" />
 </div>
 </div>
 <blockquote>
@@ -962,8 +952,8 @@ scipy.stats provides a convenient function to determine the Z value correspondin
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">26</span><span class="p">,</span><span class="mi">3</span><span class="p">):</span>
     <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">subplot_counter</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">fmri_zstat_data</span><span class="p">[</span><span class="n">i</span><span class="p">,:,:],</span><span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span> 
-    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">thresh_zstat</span><span class="p">[</span><span class="n">i</span><span class="p">,:,:],</span><span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;seismic&#39;</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span> <span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">fmri_zstat_data</span><span class="p">[:,:,</span><span class="n">i</span><span class="p">],</span><span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">thresh_zstat</span><span class="p">[:,:,</span><span class="n">i</span><span class="p">],</span><span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;seismic&#39;</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span> <span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span> 
     <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
     
     <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
@@ -974,7 +964,7 @@ scipy.stats provides a convenient function to determine the Z value correspondin
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bioimage_65_0.png" src="../_images/bioimage_65_0.png" />
+<img alt="../_images/bioimage_66_0.png" src="../_images/bioimage_66_0.png" />
 </div>
 </div>
 </div>

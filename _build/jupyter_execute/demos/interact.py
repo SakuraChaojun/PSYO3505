@@ -7,10 +7,6 @@
 
 # So far, there are three popular interactive visualization Python packages: [Altair](https://altair-viz.github.io/getting_started/overview.html), [Bokeh](https://docs.bokeh.org/en/latest/index.html), and [Plotly](https://plotly.com/python/getting-started/#JupyterLab-Support-(Python-3.5+)). For the convenience of use, I will mainly introduce Bokeh and Plotly in following parts. 
 
-# ```{tip} Hypothesis is activated on this page. You can see the web overlay by clicking on the < button in the upper-right corner of this page. You can give me any comments on pages
-# 
-# ```
-
 # In[1]:
 
 
@@ -22,6 +18,8 @@ import matplotlib.pyplot as plt
 # ## Read file and check it
 
 # This time I am not using pd.read_csv method instead input file from bokeh package directly. Therefore, you can download my notebook and run it in your own jupyter notebook.
+
+# For more details about the iris dataset, please refer [background](https://sakurachaojun.github.io/PSYO3505/demos/seaborn.html)
 
 # In[2]:
 
@@ -77,6 +75,8 @@ source.data
 
 # First, we just plot the iris data and see what happens
 
+# ### Glyphs
+
 # In[8]:
 
 
@@ -120,6 +120,8 @@ type(plot)
 
 # Now, we can map the different species to a different colour, to do this we need to import *CategoricalColorMapper* and create a mapper
 
+# ### Legend and hover
+
 # In[12]:
 
 
@@ -144,7 +146,7 @@ plot.legend.location = 'top_left'
 show(plot)
 
 
-# Also, We can add hover to 'glyphs' and let us look at each point values specifically. Import *HoverTool* and create hover 
+# Hover is another important function, you can get the data values when your mouse hovers over a point in the plot. We can add hover to 'glyphs' and Import *HoverTool* and create hover 
 
 # In[14]:
 
@@ -163,6 +165,8 @@ show(plot)
 # Try to hover the cursor over the points
 
 # Like matplotlib, Bokeh accepts ‘subplot’ to generates multiple ‘glyphs’ in one output. Here we use gridplot package 
+
+# ### Grid Plot
 
 # In[15]:
 
@@ -264,6 +268,8 @@ figure
 
 # Additionally, Plotly has a function to show the table, like data frame.
 
+# ### Enhanced table
+
 # In[20]:
 
 
@@ -317,12 +323,12 @@ plt.show()
 # In[30]:
 
 
-fig = plt.figure(figsize=[8, 12])
+fig = plt.figure(figsize=[12, 12])
 subplot_counter = 1
 
-for i in range (0,157,10):
-    ax = fig.add_subplot(4, 4, subplot_counter)
-    plt.imshow(vol[i,:,:],cmap = 'gray') 
+for i in range (0,67,6):
+    ax = fig.add_subplot(3, 4, subplot_counter)
+    plt.imshow(vol[:,:,i],cmap = 'gray') 
     plt.axis('off')
     
     plt.tight_layout()

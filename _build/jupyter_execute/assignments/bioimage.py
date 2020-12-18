@@ -23,7 +23,7 @@
 
 # ### Read file and check it
 
-# In[1]:
+# In[2]:
 
 
 import imageio
@@ -34,7 +34,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-# In[29]:
+# In[3]:
 
 
 brain_img = imageio.imread('Anat001.20040930.142737.2.MPRAGE_T1_SAGITTAL.0080.dcm')
@@ -42,13 +42,13 @@ brain_img = imageio.imread('Anat001.20040930.142737.2.MPRAGE_T1_SAGITTAL.0080.dc
 
 # Unlike typically image file, DICOM file has metadata. Metadata can help you get idea about ‘modality‘ (modality refers to the type of imaging, such as CT, PET, MRI, EEG, MEG, etc), slice, date and patient details etc. 
 
-# In[30]:
+# In[4]:
 
 
 brain_img.meta
 
 
-# In[31]:
+# In[5]:
 
 
 brain_img.meta['Modality']
@@ -58,7 +58,7 @@ brain_img.meta['Modality']
 
 # After that, we can display the image 
 
-# In[32]:
+# In[6]:
 
 
 plt.imshow(brain_img,cmap='gray')
@@ -74,7 +74,7 @@ plt.show()
 # 
 # ---PSYO/NESC 3505 Assignment 5 cell 27
 
-# In[33]:
+# In[7]:
 
 
 hist = ndi.histogram(brain_img,min=0,max=500,bins=500)
@@ -88,7 +88,7 @@ plt.show()
 
 # Like Datacamp course mentioned, we can apply mask method to compute and plot a histogram only of voxels inside the brain mask.
 
-# In[34]:
+# In[8]:
 
 
 brain_mask = np.where(brain_img > 125,1,0)
@@ -101,7 +101,7 @@ plt.show()
 
 # We can plot histogram again, this time we care about mask image. therefore, voxels not in the brain mask should take value of np.nan(). not display in the histogram. 
 
-# In[35]:
+# In[9]:
 
 
 masked_image = np.where(brain_mask ==1, brain_img,np.nan)
@@ -112,7 +112,7 @@ plt.show()
 
 # The image look like:
 
-# In[36]:
+# In[10]:
 
 
 masked_image = np.where(brain_mask ==1, brain_img,np.nan)
@@ -129,13 +129,13 @@ plt.show()
 # 
 # Same steps above, we load the files and check it 
 
-# In[37]:
+# In[11]:
 
 
 vol = imageio.volread('5.T1_GRE_3D_AXIAL')
 
 
-# In[38]:
+# In[12]:
 
 
 vol.shape
@@ -143,7 +143,7 @@ vol.shape
 
 # Also, we want to know the image spatial resolution. we are using voxels to describe the 3D image ‘pixels’ (volume pixels). Voxels data stored in the metadata property ‘sampling’ (note, they are in mm) 
 
-# In[39]:
+# In[13]:
 
 
 vol.meta['sampling']
@@ -151,7 +151,7 @@ vol.meta['sampling']
 
 # Next, we use subplots methods to visualize a number of slices through the brain volume. 
 
-# In[40]:
+# In[14]:
 
 
 fig = plt.figure(figsize=[8, 12])
@@ -168,12 +168,14 @@ for i in range (0,159,10):
 plt.show()
 
 
+# Here we have other way: [Plotly](https://sakurachaojun.github.io/PSYO3505/demos/interact.html#interactive-app-with-plotly) can directly generate interactively, ‘real-time’ images.
+
 # > Another cool thing we can do with a 3D image is visualize a slice in some other dimension. That is, although the image was aquired as 160 slices in the axial plane, we can "reslice" the image to view the image from a different perspective. 
 # 
 # ---PSYO/NESC 3505 Assignment 5 cell 23
 # 
 
-# In[41]:
+# In[15]:
 
 
 plt.imshow(vol[:,:,79],cmap = 'gray') 
@@ -183,7 +185,7 @@ plt.show()
 
 # By using rorate methods, turn the image right side up for the plot
 
-# In[42]:
+# In[16]:
 
 
 plt.imshow(ndi.rotate(vol[:,:,79],angle = 180,reshape = 'false'),cmap = 'gray') 
@@ -219,7 +221,7 @@ plt.show()
 
 # ### Read file and check it
 
-# In[43]:
+# In[17]:
 
 
 fmri_zstat = nib.load('V5_loc1_zstat1.nii.gz')
@@ -228,7 +230,7 @@ type(fmri_zstat)
 
 # NIfTI image is its header, which contains metadata for the image
 
-# In[44]:
+# In[18]:
 
 
 print(fmri_zstat.header)
@@ -238,7 +240,7 @@ print(fmri_zstat.header)
 # 
 # ---PSYO/NESC 3505 Assignment 5 cell 41
 
-# In[45]:
+# In[19]:
 
 
 fmri_zstat.shape
@@ -246,7 +248,7 @@ fmri_zstat.shape
 
 # Because we cannot access the data directly due to this file special format, we need applying  .get_fdata() method to access it. 
 
-# In[46]:
+# In[20]:
 
 
 fmri_zstat_data = fmri_zstat.get_fdata()
@@ -257,7 +259,7 @@ type(fmri_zstat_data)
 # 
 # ---PSYO/NESC 3505 Assignment 5 cell 45
 
-# In[47]:
+# In[21]:
 
 
 print('Max z value = ' + str(fmri_zstat_data.max().round(2)))
@@ -268,7 +270,7 @@ print('Min z value = ' + str(fmri_zstat_data.min().round(2)))
 
 # due the fMRI data is lower resolution, we have only 27 slices
 
-# In[48]:
+# In[22]:
 
 
 fig = plt.figure(figsize=[8, 12])
@@ -276,7 +278,7 @@ subplot_counter = 1
 
 for i in range (0,26,3):
     ax = fig.add_subplot(3, 3, subplot_counter)
-    plt.imshow(fmri_zstat_data[i,:,:],cmap = 'gray') 
+    plt.imshow(fmri_zstat_data[:,:,i],cmap = 'gray') 
     plt.axis('off')
     
     plt.tight_layout()
@@ -294,7 +296,7 @@ plt.show()
 # 
 # ---PSYO/NESC 3505 Assignment 5 cell 50
 
-# In[49]:
+# In[23]:
 
 
 fig = plt.figure(figsize=[8, 12])
@@ -302,7 +304,7 @@ subplot_counter = 1
 
 for i in range (0,26,3):
     ax = fig.add_subplot(3, 3, subplot_counter)
-    plt.imshow(fmri_zstat_data[i,:,:],cmap = 'seismic',vmin= -8,vmax=8) 
+    plt.imshow(fmri_zstat_data[:,:,i],cmap = 'seismic',vmin= -8,vmax=8) 
     plt.axis('off')
     
     plt.tight_layout()
@@ -320,7 +322,7 @@ plt.show()
 # 
 # ---PSYO/NESC 3505 Assignment 5 cell 51
 
-# In[50]:
+# In[24]:
 
 
 z_thresh = scipy.stats.norm.ppf(1 - .0001)
@@ -329,7 +331,7 @@ print(z_thresh)
 
 # Plot the image thresholded to show only voxels with values above zthresh
 
-# In[51]:
+# In[25]:
 
 
 fig = plt.figure(figsize=[8, 12])
@@ -338,7 +340,7 @@ thresh_zstat = np.where(fmri_zstat_data>z_thresh,fmri_zstat_data,np.nan)
 
 for i in range (0,26,3):
     ax = fig.add_subplot(3, 3, subplot_counter)
-    plt.imshow(thresh_zstat[i,:,:],cmap = 'seismic',vmin= -8,vmax=8) 
+    plt.imshow(thresh_zstat[:,:,i],cmap = 'seismic',vmin= -8,vmax=8) 
     plt.axis('off')
     
     plt.tight_layout()
@@ -353,7 +355,7 @@ plt.show()
 
 # Reload the image
 
-# In[52]:
+# In[26]:
 
 
 func = nib.load('V5_loc1_example_func.nii.gz')
@@ -362,7 +364,7 @@ underlay = func.get_fdata()
 
 # And put all together
 
-# In[53]:
+# In[27]:
 
 
 fig = plt.figure(figsize=[8, 12])
@@ -371,8 +373,8 @@ thresh_zstat = np.where(fmri_zstat_data>z_thresh,fmri_zstat_data,np.nan)
 
 for i in range (0,26,3):
     ax = fig.add_subplot(3, 3, subplot_counter)
-    plt.imshow(fmri_zstat_data[i,:,:],cmap = 'gray') 
-    plt.imshow(thresh_zstat[i,:,:],cmap = 'seismic',vmin= -8,vmax=8) 
+    plt.imshow(fmri_zstat_data[:,:,i],cmap = 'gray') 
+    plt.imshow(thresh_zstat[:,:,i],cmap = 'seismic',vmin= -8,vmax=8) 
     plt.axis('off')
     
     plt.tight_layout()
