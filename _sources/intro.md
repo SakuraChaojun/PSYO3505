@@ -1,7 +1,7 @@
 Welcome 
 ============================
 
-I have learned two essential parts of this course. One is the data processing methods, and the other is data visualization. I love data visualization, and I've learned a lot about data visualization techniques from here. The data processing focus on biomedical image and EEG analysis. Although it is not very in-depth, it gives me good inspiration.
+I have learned two essential parts of this course. One is the data processing methods, and the other is data visualization. The data processing focus on biomedical image and EEG analysis. Although it is not very in-depth, it gives me good inspiration. As for data visualization, I learned to use Matplotlib, Seaborn and bokeh to represent data
 
 In this portfolio, I try to integrate the work from assignments, projects and demos. However, since many things can't be done by myself, I will refer to background knowledge or team members' code to make sure that I can show my work. I want to express my gratitude here. I have added comments if these codes (words) were not my work. 
 
