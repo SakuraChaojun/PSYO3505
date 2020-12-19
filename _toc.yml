@@ -10,8 +10,7 @@
     
 - part: Projects
   sections:
-    - file: markdown
-    - file: notebooks
+    - file: projects/eeg
 
 - part: Demos
   sections:
@@ -19,11 +18,6 @@
     - file: demos/gitbook
     - file: demos/seaborn
     - file: demos/interact
-    
-- part: Others
-  sections:
-    - file: markdown
-    - file: notebooks
 
 - part: References
   sections:
