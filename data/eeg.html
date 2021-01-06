@@ -1,0 +1,1178 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EEG/ERP Data Analysis &#8212; Art of Thinking</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/logo_icon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="MRI Image Analysis in Python" href="bioimage.html" />
+    <link rel="prev" title="Exploratory data analysis" href="EDA.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo_icon.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Art of Thinking</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Experimental Design
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exp/single.html">
+   Single Unit Data and Spike Trains
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Data Analysis
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="EDA.html">
+   Exploratory data analysis
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   EEG/ERP Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="bioimage.html">
+   MRI Image Analysis in Python
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Web Development
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../web/gitbook.html">
+   Use Git book bulid your own page
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Others
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../others/latex.html">
+   Writing Math Equations in Jupyter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../others/seaborn.html">
+   Data visualization with Seaborn
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../others/interact.html">
+   Interactive data visualizations
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  References
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../re.html">
+   References
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/data/eeg.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/SakuraChaojun/PSYO3505"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/SakuraChaojun/PSYO3505/issues/new?title=Issue%20on%20page%20%2Fdata/eeg.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/SakuraChaojun/PSYO3505/main?urlpath=tree/docs/data/eeg.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#background">
+   Background
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#read-files-and-check-it">
+   Read files and check it
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualization-erp-waveforms">
+   Visualization: ERP Waveforms
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-difference-waves">
+   Visualizing Difference Waves
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="eeg-erp-data-analysis">
+<h1>EEG/ERP Data Analysis<a class="headerlink" href="#eeg-erp-data-analysis" title="Permalink to this headline">¶</a></h1>
+<p>Based on Project 2
+<br>
+<font color = red>This Demo and the attached files from course PSYO/NESC 3505 Neural Data Science, at Dalhousie University. You should not disseminate, distribute or copy. </font>
+<br>
+<font color = red><strong>NOTE: I did not participate in any part of the experiment.The data is given to me by the professor. I only care about data processing </strong></font>
+<br>
+<font color = red><strong>NOTE: This is a team-based project and I will try my best to show my personal outcomes. If I need other team members outcomes as supplements, I will provide notes in Markdown or comments in code block.</strong></font>
+<br>
+<font color = red><strong>NOTE: Please feel free to contact me if you think this Demo has caused you any confusion</strong></font>
+<br>
+<font color = red>I am NOT post inappropriate or copyrighted content, advertise or promote outside products or organizations.</font>
+<br>
+<font color = red>If you feel that any part of this demo is inappropriate or controversial, please contact me immediately</font>
+<br>
+© Copyright 2020.PSYO/NESC 3505 FAll 2020 https://dalpsychneuro.github.io/NESC_3505_textbook/intro.html
+<br>
+<strong>For demonstration purposes only</strong></p>
+<div class="section" id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>N400 – Artificial Grammar Learning (NAGL) Experiment
+<br>
+<br>
+In the full study, we collected data in two experimental paradigms (N400 and artificial grammar learning), with the aim of finding out whether individual differences in brain activity across the two paradigms were correlated. For this project, we will work only with the N400 data.
+<br>
+<br>
+The N400 is an ERP component associated with processing the meanings of words (semantic information). It was first discovered more than 40 years ago (Kutas &amp; Hillyard, 1980), contrasting sentences that ended with a semantic violation (a word that doesn’t make sense given the prior context of the sentence, e.g., I take my coffee with milk and dog.) with meaningful control sentences (e.g., I take my coffee with milk and sugar.). The N400 manifests as a more negative ERP potential, particularly over the top (vertex) of the head, for violation than control sentences, with the largest difference usually around 400-600 ms after the onset of the violation word.
+<br>
+<br>
+The N400 has been studied extensively since then (Kutas &amp; Federmeier, 2011) and the general consensus is that it reflects brain activity associated with integrating incoming information into one’s ongoing “context”. That is, as we’re reading or listening to language, we create a mental representation of the topic (the context), and try to integrate the meaning of each new word into that context. Words that don’t make sense are harder (or impossible) to integrate, so our brains engage in more of this “semantic integration” activity, leading to a larger N400.
+<br>
+<br>
+In the present study, we were interested in whether semantic integration changes when there is background noise that makes the sentences harder to hear and understand. So, we presented auditory sentences to participants, with half of the sentences ending with semantic violations. In the first half of the experiment, the sentences were presented with no background noise, but in the second half of the experiment, the sentences were presented with background noise (“multi-talker babble”; the sound of several people talking at once, without any of the background speech being understandable).
+<br>
+<br>
+This experiment combined two tasks that both tap into executive function: the flanker and Simon effects. Participants’ task was to press one of two buttons depending on the colour of a circle shown to the left or right of the centre of the screen
+<br></p>
+</div></blockquote>
+<p>— PSYO 3505 Fall 2019 Project 2 cell1</p>
+<p>This experiment has following hypotheses</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Here will be an N400 in the quiet condition, with violation sentences eliciting more negative ERPs than control sentences between 400-600 ms
+<br>
+<br></p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>There will also be an N400 in the quiet condition, with violation sentences eliciting more negative ERPs than control sentences between 400-600 ms
+<br>
+<br></p></li>
+<li><p>The N400 in response to violations will be significantly smaller in the noise than quiet conditions, because more cognitive effort will be directed to filtering out noise, leaving fewer resources to process the semantic anomaly.</p></li>
+</ul>
+<p>— PSYO 3505 Fall 2019 Project 2 cell2</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">glob</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="kn">import</span> <span class="nn">mne</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="read-files-and-check-it">
+<h2>Read files and check it<a class="headerlink" href="#read-files-and-check-it" title="Permalink to this headline">¶</a></h2>
+<p>Due to only <a class="reference external" href="https://mne.tools/stable/index.html">MNE</a> package can read .fif files. We first need to get the files path and then using for loop reading the files one by one.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/Users/sakuramac/eegdata&quot;</span>
+<span class="n">subjects</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Check the list</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">subjects</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;nagl020-ave.fif&#39;, &#39;nagl030-ave.fif&#39;, &#39;nagl029-ave.fif&#39;, &#39;nagl006-ave.fif&#39;, &#39;nagl016-ave.fif&#39;, &#39;nagl028-ave.fif&#39;, &#39;nagl017-ave.fif&#39;, &#39;nagl007-ave.fif&#39;, &#39;nagl031-ave.fif&#39;, &#39;nagl021-ave.fif&#39;, &#39;nagl005-ave.fif&#39;, &#39;nagl004-ave.fif&#39;, &#39;nagl018-ave.fif&#39;, &#39;nagl008-ave.fif&#39;, &#39;nagl009-ave.fif&#39;, &#39;nagl019-ave.fif&#39;, &#39;nagl026-ave.fif&#39;, &#39;nagl010-ave.fif&#39;, &#39;nagl002-ave.fif&#39;, &#39;nagl003-ave.fif&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># following codes based on team members work and modify </span>
+<span class="n">evoked</span><span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">subjects</span><span class="p">)):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">read_evokeds</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span><span class="n">subjects</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">evoked</span><span class="p">[</span><span class="n">subjects</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reading /Users/sakuramac/eegdata/nagl020-ave.fif ...
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 39 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 33 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 34 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 25 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+Reading /Users/sakuramac/eegdata/nagl030-ave.fif ...
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 37 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 36 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 34 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 18 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+Reading /Users/sakuramac/eegdata/nagl029-ave.fif ...
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 40 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 40 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 39 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 35 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+Reading /Users/sakuramac/eegdata/nagl006-ave.fif ...
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 39 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 37 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 36 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 30 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+Reading /Users/sakuramac/eegdata/nagl016-ave.fif ...
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 38 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 38 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 36 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 26 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+Reading /Users/sakuramac/eegdata/nagl028-ave.fif ...
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 32 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 35 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 25 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 26 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+Reading /Users/sakuramac/eegdata/nagl017-ave.fif ...
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 29 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 29 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 24 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 25 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+Reading /Users/sakuramac/eegdata/nagl007-ave.fif ...
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 41 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 40 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 35 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 33 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+Reading /Users/sakuramac/eegdata/nagl031-ave.fif ...
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 39 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 39 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 33 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 22 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+Reading /Users/sakuramac/eegdata/nagl021-ave.fif ...
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 37 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 40 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 30 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 35 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+Reading /Users/sakuramac/eegdata/nagl005-ave.fif ...
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 10 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 10 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 38 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 30 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+Reading /Users/sakuramac/eegdata/nagl004-ave.fif ...
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 31 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 36 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 32 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 20 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+Reading /Users/sakuramac/eegdata/nagl018-ave.fif ...
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 40 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 34 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 33 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 26 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+Reading /Users/sakuramac/eegdata/nagl008-ave.fif ...
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 41 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 38 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 36 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 28 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+Reading /Users/sakuramac/eegdata/nagl009-ave.fif ...
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 39 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 40 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 32 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 26 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+Reading /Users/sakuramac/eegdata/nagl019-ave.fif ...
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 40 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 39 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 31 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 27 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+Reading /Users/sakuramac/eegdata/nagl026-ave.fif ...
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 40 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 40 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 38 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 33 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+Reading /Users/sakuramac/eegdata/nagl010-ave.fif ...
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 33 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 33 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 34 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 36 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+Reading /Users/sakuramac/eegdata/nagl002-ave.fif ...
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 37 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 33 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 33 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 21 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+Reading /Users/sakuramac/eegdata/nagl003-ave.fif ...
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 39 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Quiet/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 38 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Control/Correct)
+        0 CTF compensation matrices available
+        nave = 33 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+    Found the data of interest:
+        t =    -199.22 ...    1000.00 ms (Noise/Violation/Correct)
+        0 CTF compensation matrices available
+        nave = 26 - aspect type = 100
+No projector specified for this dataset. Please consider the method self.add_proj.
+No baseline correction applied
+</pre></div>
+</div>
+</div>
+</div>
+<p>We use a dictionary to collect participants’ data, the key is a participant number (for conveniences here we use files name to represent participants) and the value is raw data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">evoked</span><span class="p">[</span><span class="s1">&#39;nagl020-ave.fif&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;Evoked | &#39;Quiet/Control/Correct&#39; (average, N=39), [-0.19922, 1] sec, 64 ch, ~400 kB&gt;,
+ &lt;Evoked | &#39;Quiet/Violation/Correct&#39; (average, N=33), [-0.19922, 1] sec, 64 ch, ~400 kB&gt;,
+ &lt;Evoked | &#39;Noise/Control/Correct&#39; (average, N=34), [-0.19922, 1] sec, 64 ch, ~400 kB&gt;,
+ &lt;Evoked | &#39;Noise/Violation/Correct&#39; (average, N=25), [-0.19922, 1] sec, 64 ch, ~400 kB&gt;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>For this analysis we do not care about individual results, we can using the ‘subjects’ list index to get the same results. This makes it easier for us to process the data later because we don’t need participant name as the key-value</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">evoked</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">subjects</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;Evoked | &#39;Quiet/Control/Correct&#39; (average, N=39), [-0.19922, 1] sec, 64 ch, ~400 kB&gt;,
+ &lt;Evoked | &#39;Quiet/Violation/Correct&#39; (average, N=33), [-0.19922, 1] sec, 64 ch, ~400 kB&gt;,
+ &lt;Evoked | &#39;Noise/Control/Correct&#39; (average, N=34), [-0.19922, 1] sec, 64 ch, ~400 kB&gt;,
+ &lt;Evoked | &#39;Noise/Violation/Correct&#39; (average, N=25), [-0.19922, 1] sec, 64 ch, ~400 kB&gt;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>There is one list entry for each experimental condition, for access each specific condition we using a list index</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">evoked</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">subjects</span><span class="p">[</span><span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Evoked | &#39;Quiet/Control/Correct&#39; (average, N=39), [-0.19922, 1] sec, 64 ch, ~400 kB&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Above approach cannot access the actual value, we need to use a visualization approach to present the data.</p>
+<p>Use list comprehension to create a list of ‘condition names’, we can use this list for the following plots.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conditions</span> <span class="o">=</span> <span class="p">[</span><span class="n">evoked</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">subjects</span><span class="p">[</span><span class="mi">0</span><span class="p">])[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">comment</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">evoked</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">subjects</span><span class="p">[</span><span class="mi">0</span><span class="p">])))]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">conditions</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Quiet/Control/Correct&#39;, &#39;Quiet/Violation/Correct&#39;, &#39;Noise/Control/Correct&#39;, &#39;Noise/Violation/Correct&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="visualization-erp-waveforms">
+<h2>Visualization: ERP Waveforms<a class="headerlink" href="#visualization-erp-waveforms" title="Permalink to this headline">¶</a></h2>
+<p>To ensure the figure results are correct, we first need to average the EEG data by using the mne.grand_average () method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">evoked</span><span class="p">[</span><span class="n">subj</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">subj</span> <span class="ow">in</span> <span class="n">evoked</span><span class="o">.</span><span class="n">keys</span><span class="p">()]</span>
+<span class="n">gavg</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="c1"># team members code</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">conditions</span><span class="p">):</span>
+    <span class="n">gavg</span><span class="p">[</span><span class="n">value</span><span class="p">]</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">grand_average</span><span class="p">([</span><span class="n">evoked</span><span class="p">[</span><span class="n">subj</span><span class="p">][</span><span class="n">index</span><span class="p">]</span> <span class="k">for</span> <span class="n">subj</span> <span class="ow">in</span> <span class="n">evoked</span><span class="o">.</span><span class="n">keys</span><span class="p">()])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Identifying common channels ...
+Identifying common channels ...
+Identifying common channels ...
+Identifying common channels ...
+</pre></div>
+</div>
+</div>
+</div>
+<p>We plot the waveforms for a single electrode, Cz, which is located at the vertex (top) of the head. Because the N400 is typically largest at this location.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># an example code</span>
+<span class="n">Cz_idx</span> <span class="o">=</span> <span class="n">gavg</span><span class="p">[</span><span class="s1">&#39;Quiet/Control/Correct&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">ch_names</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;Cz&#39;</span><span class="p">)</span>
+
+<span class="n">mne</span><span class="o">.</span><span class="n">viz</span><span class="o">.</span><span class="n">plot_compare_evokeds</span><span class="p">(</span><span class="n">gavg</span><span class="p">,</span> <span class="n">picks</span><span class="o">=</span><span class="n">Cz_idx</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/eeg_26_0.png" src="../_images/eeg_26_0.png" />
+</div>
+</div>
+<p>The topographic map is another way to visualize EEG data. Unlike waveforms, Topo maps show how the voltage is distributed across the scalp.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># an example code</span>
+<span class="n">gavg</span><span class="p">[</span><span class="s1">&#39;Quiet/Control/Correct&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot_topomap</span><span class="p">(</span><span class="o">.</span><span class="mi">500</span><span class="p">,</span> <span class="n">average</span><span class="o">=.</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/eeg_28_0.png" src="../_images/eeg_28_0.png" />
+</div>
+</div>
+<blockquote>
+<div><p>Both types of visualization are useful: waveform plots can help you see when the effects are largest (and especially, when differences occur) over time, but you have to know which electrode(s) to look at. Topo maps, in contrast, allow you to figure out where on the scalp the effects are biggest, but you have to specify time. Or, you can plot a series of topo maps over a range of times.</p>
+</div></blockquote>
+<p>— PSYO 3505 Fall 2019 Project 2 cell 37</p>
+</div>
+<div class="section" id="visualizing-difference-waves">
+<h2>Visualizing Difference Waves<a class="headerlink" href="#visualizing-difference-waves" title="Permalink to this headline">¶</a></h2>
+<p>We should create a dictionary called gavg_diff that contains the difference waves for each contrast. This dictionary can help us visualize different waves in the next. Again, here using list comprehension to create the dictionary.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">contrasts</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Quiet_V-C&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Quiet/Violation/Correct&#39;</span><span class="p">,</span> <span class="s1">&#39;Quiet/Control/Correct&#39;</span><span class="p">],</span>
+             <span class="s1">&#39;Noise_V-C&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Noise/Violation/Correct&#39;</span><span class="p">,</span> <span class="s1">&#39;Noise/Control/Correct&#39;</span><span class="p">]</span>
+            <span class="p">}</span>
+<span class="n">gavg_diff</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">contrasts</span><span class="p">:</span>
+    <span class="n">gavg_diff</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">combine_evoked</span><span class="p">([</span><span class="n">gavg</span><span class="p">[</span><span class="n">contrasts</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]],</span> <span class="o">-</span><span class="n">gavg</span><span class="p">[</span><span class="n">contrasts</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]]],</span> <span class="n">weights</span><span class="o">=</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># team members code</span>
+<span class="n">mne</span><span class="o">.</span><span class="n">viz</span><span class="o">.</span><span class="n">plot_compare_evokeds</span><span class="p">(</span><span class="n">gavg_diff</span><span class="p">,</span> <span class="n">picks</span><span class="o">=</span><span class="n">Cz_idx</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/eeg_33_0.png" src="../_images/eeg_33_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">gavg_diff</span><span class="p">:</span>
+    <span class="n">gavg_diff</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">plot_topomap</span><span class="p">(</span><span class="o">.</span><span class="mi">500</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">average</span><span class="o">=.</span><span class="mi">200</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">key</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/eeg_34_0.png" src="../_images/eeg_34_0.png" />
+<img alt="../_images/eeg_34_1.png" src="../_images/eeg_34_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p>[1] <a class="reference external" href="https://dalpsychneuro.github.io/NESC_3505_textbook/intro.html">NESC 3505 Neural Data Science, at Dalhousie University. Textbook</a>
+<br>
+[2] NESC 3505 Neural Data Science, at Dalhousie University. Project 2
+<br>
+[3] <a class="reference external" href="https://learn.datacamp.com/courses/biomedical-image-analysis-in-python">‘Biomedical Image Analysis in Python’.an INTERACTIVE COURSE</a></p>
+<p>Based on Project 2
+<br>
+<font color = red>This Demo and the attached files from course PSYO/NESC 3505 Neural Data Science, at Dalhousie University. You should not disseminate, distribute or copy. </font>
+<br>
+<font color = red><strong>NOTE: I did not participate in any part of the experiment.The data is given to me by the professor. I only care about data processing </strong></font>
+<br>
+<font color = red><strong>NOTE: This is a team-based project and I will try my best to show my personal outcomes. If I need other team members outcomes as supplements, I will provide notes in Markdown or comments in code block.</strong></font>
+<br>
+<font color = red><strong>NOTE: Please feel free to contact me if you think this Demo has caused you any confusion</strong></font>
+<br>
+<font color = red>I am NOT post inappropriate or copyrighted content, advertise or promote outside products or organizations.</font>
+<br>
+<font color = red>If you feel that any part of this demo is inappropriate or controversial, please contact me immediately</font>
+<br>
+© Copyright 2020.PSYO/NESC 3505 FAll 2020 https://dalpsychneuro.github.io/NESC_3505_textbook/intro.html
+<br>
+<strong>For demonstration purposes only</strong></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./data"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="EDA.html" title="previous page">Exploratory data analysis</a>
+    <a class='right-next' id="next-link" href="bioimage.html" title="next page">MRI Image Analysis in Python</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Chaojun Ma<br/>
+        
+            &copy; Copyright 2020-2021. This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported License.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'G-NVX8B0W6TJ', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>

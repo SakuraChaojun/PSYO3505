@@ -1,0 +1,538 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Writing Math Equations in Jupyter &#8212; Art of Thinking</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/logo_icon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data visualization with Seaborn" href="seaborn.html" />
+    <link rel="prev" title="Use Git book bulid your own page" href="../web/gitbook.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo_icon.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Art of Thinking</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Experimental Design
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exp/single.html">
+   Single Unit Data and Spike Trains
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Data Analysis
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data/EDA.html">
+   Exploratory data analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data/eeg.html">
+   EEG/ERP Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data/bioimage.html">
+   MRI Image Analysis in Python
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Web Development
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../web/gitbook.html">
+   Use Git book bulid your own page
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Others
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Writing Math Equations in Jupyter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="seaborn.html">
+   Data visualization with Seaborn
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="interact.html">
+   Interactive data visualizations
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  References
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../re.html">
+   References
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/others/latex.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/SakuraChaojun/PSYO3505"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/SakuraChaojun/PSYO3505/issues/new?title=Issue%20on%20page%20%2Fothers/latex.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#latex-overview">
+   Latex Overview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#common-mathematical-symbols">
+   Common mathematical symbols
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matrix">
+   Matrix
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learn-more">
+   Learn More
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References:
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="writing-math-equations-in-jupyter">
+<h1>Writing Math Equations in Jupyter<a class="headerlink" href="#writing-math-equations-in-jupyter" title="Permalink to this headline">¶</a></h1>
+<p>Jupyter allows you to write code, text, mathematical formula and pictures in the same document and others can easily understand your ideas and processes by share this document. You may not familiar how to insert math equations in notebook. So, in this demo, I am going to show how to write formula in Jupyter notebook.</p>
+<div class="section" id="latex-overview">
+<h2>Latex Overview<a class="headerlink" href="#latex-overview" title="Permalink to this headline">¶</a></h2>
+<p>First of all, we need change the cell type to markdown. Because latex is not a programming language.</p>
+<p>Once the changes are completed, we can try to enter our first formula. Y=a+bx by typing</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ y = a + b x $
+</pre></div>
+</div>
+<p><span class="math notranslate nohighlight">\( y = a + b x \)</span></p>
+<p>You may have noticed that we need to use the $ in above example, in fact everything between the $ will be rendered as mathematical symbol.
+How about this one:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$$P(A \mid B) = \frac{ P(B \mid A) P(A) }{ P(B) }$$
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[P(A \mid B) = \frac{ P(B \mid A) P(A) }{ P(B) }\]</div>
+<p>We are not concerned the specifics of Latex wrting rules in here, you may notice that there are two $$ are applying.</p>
+<p>Latex gives us two modes in here: inline mode and display mode. In-line mode, also known as in-text mode, inlays formulas into regular text, along with text. The display mode is to separate the formulas into a single line and center them. By using single $ means inline mode and $$ for display mode.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>In here we using single character $ y = a + b x $ inlays into text
+</pre></div>
+</div>
+<p>In here we using single character <span class="math notranslate nohighlight">\( y = a + b x \)</span> inlays into text</p>
+</div>
+<div class="section" id="common-mathematical-symbols">
+<h2>Common mathematical symbols<a class="headerlink" href="#common-mathematical-symbols" title="Permalink to this headline">¶</a></h2>
+<p>Exponents and subscripts can be implemented with ^ and _ followed by the corresponding character like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a_</span><span class="p">{</span><span class="mi">1</span><span class="p">}</span>
+<span class="n">x</span><span class="o">^</span><span class="p">{</span><span class="mi">2</span><span class="p">}</span>
+\<span class="n">sum_</span><span class="p">{</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">}</span><span class="o">^</span><span class="p">{</span><span class="n">N</span><span class="p">}</span>
+</pre></div>
+</div>
+<p><span class="math notranslate nohighlight">\(a_{1}\)</span> <span class="math notranslate nohighlight">\(x^{2}\)</span> <span class="math notranslate nohighlight">\(\sum_{i=1}^{N}\)</span></p>
+<p>\sqrt for square root and  \sqrt[n] for n’th root</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">sqrt</span><span class="p">[</span><span class="mi">4</span><span class="p">]{</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="o">+</span><span class="n">y</span><span class="o">^</span><span class="mi">2</span><span class="p">}</span>
+</pre></div>
+</div>
+<p><span class="math notranslate nohighlight">\(\sqrt[4]{x^2+y^2}\)</span></p>
+<p>Vectors are usually variables with little arrows at the top. This can be obtained by  \vec. The commands \overrightarrow and \overleftarrow are useful for defining A vector from A to B. Such as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">overrightarrow</span><span class="p">{</span><span class="n">AB</span><span class="p">}</span><span class="o">*</span>\<span class="n">vec</span> <span class="n">A</span>
+</pre></div>
+</div>
+<p><span class="math notranslate nohighlight">\(\overrightarrow{AB}*\vec A\)</span></p>
+<p>For example, summation can be done using the \sum command, product operations can be done using \prod, and integration can be done using the \int command. Some examples are as follows</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+<th class="head"><p></p></th>
+<th class="head"><p></p></th>
+<th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>\sum</p></td>
+<td><p><span class="math notranslate nohighlight">\(\sum\)</span></p></td>
+<td><p>\int</p></td>
+<td><p><span class="math notranslate nohighlight">\(\int\)</span></p></td>
+<td><p>\bigcup</p></td>
+<td><p><span class="math notranslate nohighlight">\( \bigcup\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>\sum_{i=1}^{N}</p></td>
+<td><p><span class="math notranslate nohighlight">\(\sum_{i=1}^{N}\)</span></p></td>
+<td><p>\int_{a}^{b}</p></td>
+<td><p><span class="math notranslate nohighlight">\( \int_{a}^{b}\)</span></p></td>
+<td><p>\bigcap</p></td>
+<td><p><span class="math notranslate nohighlight">\(\bigcap\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>\prod</p></td>
+<td><p><span class="math notranslate nohighlight">\(\prod\)</span></p></td>
+<td><p>\iint</p></td>
+<td><p><span class="math notranslate nohighlight">\(\iint\)</span></p></td>
+<td><p>x_{3}</p></td>
+<td><p><span class="math notranslate nohighlight">\(x_{3}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>\prod_{i=1}^{N}</p></td>
+<td><p><span class="math notranslate nohighlight">\(\prod_{i=1}^{N}\)</span></p></td>
+<td><p>\iint_{a}^{b}</p></td>
+<td><p><span class="math notranslate nohighlight">\(\iint_{a}^{b}\)</span></p></td>
+<td><p>\lim_{x\to 0}</p></td>
+<td><p><span class="math notranslate nohighlight">\(\lim_{x\to 0}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>Based on above details we can try to write a simple calculus formula</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$$ f(x) = \sum_{i=0}^{N} \int_{a}^{b} g(t,i) \text{d}t \tag{a}$$
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[ f(x) = \sum_{i=0}^{N} \int_{a}^{b} g(t,i) \text{d}t \tag{a}\]</div>
+</div>
+<div class="section" id="matrix">
+<h2>Matrix<a class="headerlink" href="#matrix" title="Permalink to this headline">¶</a></h2>
+<p>The command used to generate the matrix is as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$$\begin{matrix}
+...
+\end{matrix}$$
+</pre></div>
+</div>
+<p>… means LaTeX matrix commands, in which each line ends with \ and the elements of the matrix are separated by &amp;. Examples are as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$$
+\begin{matrix}
+1 &amp; 2 &amp; 3 \\
+4 &amp; 5 &amp; 6 \\
+7 &amp; 8 &amp; 9
+\end{matrix} \tag{3-1}
+$$
+</pre></div>
+</div>
+<p><span class="math notranslate nohighlight">\(
+\begin{matrix}
+1 &amp; 2 &amp; 3 \\
+4 &amp; 5 &amp; 6 \\
+7 &amp; 8 &amp; 9
+\end{matrix} \tag{3-1}
+\)</span></p>
+<p>The matrix shown above is not very beautiful, you can put brackets on the matrix</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$$
+\left [
+\begin{matrix}
+1 &amp; 2 &amp; 3 \\
+4 &amp; 5 &amp; 6 \\
+7 &amp; 8 &amp; 9
+\end{matrix}
+\right ] \tag{3-3}
+$$
+</pre></div>
+</div>
+<p><span class="math notranslate nohighlight">\(
+\left [
+\begin{matrix}
+1 &amp; 2 &amp; 3 \\
+4 &amp; 5 &amp; 6 \\
+7 &amp; 8 &amp; 9
+\end{matrix}
+\right ] \tag{3-3}
+\)</span></p>
+<p>If you have too many matrix elements, you can use  \cdots … \ddots ⋱ \vdots ⋮ And so on ellipsis to define the matrix</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$$
+\begin{bmatrix}
+1 &amp; 2 &amp; \cdots &amp; 4 \\
+7 &amp; 6 &amp; \cdots &amp; 5 \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+8 &amp; 9 &amp; \cdots &amp; 10
+\end{bmatrix} \tag{3-8}
+$$
+</pre></div>
+</div>
+<p><span class="math notranslate nohighlight">\(
+\begin{bmatrix}
+1 &amp; 2 &amp; \cdots &amp; 4 \\
+7 &amp; 6 &amp; \cdots &amp; 5 \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+8 &amp; 9 &amp; \cdots &amp; 10
+\end{bmatrix} \tag{3-8}
+\)</span></p>
+</div>
+<div class="section" id="learn-more">
+<h2>Learn More<a class="headerlink" href="#learn-more" title="Permalink to this headline">¶</a></h2>
+<p>Latex also has many more methods and techniques, but I will not elaborate on them in here because of space limitations. You can download above pdf like ‘cheat sheet’ for latex.</p>
+<p>In addition, I highly recommend a good online cooperative website ‘overleaf’ (Easy to use ,online and collaborative latex editor).  Unlike cocalc, this website focus on the academic paper (especially for science or engineering) writing.</p>
+<p>Cheers!</p>
+</div>
+<div class="section" id="references">
+<h2>References:<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p>[1]<a class="reference external" href="https://www.caam.rice.edu/~heinken/latex/symbols.pdf">LATEX Mathematical Symbols</a> <br>
+[2]<a class="reference external" href="https://towardsdatascience.com/write-markdown-latex-in-the-jupyter-notebook-10985edb91fd">Learn How to Write Markdown &amp; LaTeX in The Jupyter Notebook</a> <br>
+[3]<a class="reference external" href="https://www.math.ubc.ca/~pwalls/math-python/jupyter/latex/">Mathematical Python</a></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./others"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../web/gitbook.html" title="previous page">Use Git book bulid your own page</a>
+    <a class='right-next' id="next-link" href="seaborn.html" title="next page">Data visualization with Seaborn</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Chaojun Ma<br/>
+        
+            &copy; Copyright 2020-2021. This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported License.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'G-NVX8B0W6TJ', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>

@@ -1,0 +1,1048 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MRI Image Analysis in Python &#8212; Art of Thinking</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/logo_icon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Use Git book bulid your own page" href="../web/gitbook.html" />
+    <link rel="prev" title="EEG/ERP Data Analysis" href="eeg.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo_icon.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Art of Thinking</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Experimental Design
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exp/single.html">
+   Single Unit Data and Spike Trains
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Data Analysis
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="EDA.html">
+   Exploratory data analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="eeg.html">
+   EEG/ERP Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   MRI Image Analysis in Python
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Web Development
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../web/gitbook.html">
+   Use Git book bulid your own page
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Others
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../others/latex.html">
+   Writing Math Equations in Jupyter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../others/seaborn.html">
+   Data visualization with Seaborn
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../others/interact.html">
+   Interactive data visualizations
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  References
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../re.html">
+   References
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/data/bioimage.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/SakuraChaojun/PSYO3505"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/SakuraChaojun/PSYO3505/issues/new?title=Issue%20on%20page%20%2Fdata/bioimage.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/SakuraChaojun/PSYO3505/main?urlpath=tree/docs/data/bioimage.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-mri-data">
+   Working with MRI Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#background">
+     Background
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#read-file-and-check-it">
+     Read file and check it
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-cleaning">
+     Data cleaning
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualization">
+     Visualization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-fmri-statistical-maps">
+   Working with fMRI Statistical Maps
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Background
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Read file and check it
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Visualization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#thresholding-the-statistical-image">
+     Thresholding the statistical image
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interpretation">
+     Interpretation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="mri-image-analysis-in-python">
+<h1>MRI Image Analysis in Python<a class="headerlink" href="#mri-image-analysis-in-python" title="Permalink to this headline">¶</a></h1>
+<p>Based on assignment 5 and DataCamp ‘Biomedical Image Analysis in Python’.an INTERACTIVE COURSE (Stephen Bailey) <br>
+<font color = red >This Demo and the attached files from course PSYO/NESC 3505 Neural Data Science, at Dalhousie University. You should not disseminate, distribute or copy. </font>
+<br>
+<font color = red >This Demo using some knowledge and skills from Datacamp ‘Biomedical Image Analysis in Python’.an INTERACTIVE COURSE (Stephen Bailey)
+<br>I am NOT post inappropriate or copyrighted content, advertise or promote outside products or organizations </font>
+<br>© Copyright 2020.PSYO/NESC 3505 FAll 2020 https://dalpsychneuro.github.io/NESC_3505_textbook/intro.html
+<br>© Copyright ‘Biomedical Image Analysis in Python’.an INTERACTIVE COURSE (Stephen Bailey) https://learn.datacamp.com/courses/biomedical-image-analysis-in-python
+<br>
+<strong>For demonstration purposes only</strong></p>
+<div class="section" id="working-with-mri-data">
+<h2>Working with MRI Data<a class="headerlink" href="#working-with-mri-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="background">
+<h3>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>This assignment is based on the DataCamp lesson, Biomedical Image Analysis in Python. To complete this assignment, you can rely on chapters 1 and 2 from that lesson. I suggest that you download the slides from those chapters and refer to them as you work through this lesson.</p>
+</div></blockquote>
+<p>—PSYO/NESC 3505 Assignment 5 cell 1</p>
+</div>
+<div class="section" id="read-file-and-check-it">
+<h3>Read file and check it<a class="headerlink" href="#read-file-and-check-it" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">imageio</span>
+<span class="kn">import</span> <span class="nn">scipy.ndimage</span> <span class="k">as</span> <span class="nn">ndi</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span>
+<span class="kn">import</span> <span class="nn">nibabel</span> <span class="k">as</span> <span class="nn">nib</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">brain_img</span> <span class="o">=</span> <span class="n">imageio</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;Anat001.20040930.142737.2.MPRAGE_T1_SAGITTAL.0080.dcm&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Unlike typically image file, DICOM file has metadata. Metadata can help you get idea about ‘modality‘ (modality refers to the type of imaging, such as CT, PET, MRI, EEG, MEG, etc), slice, date and patient details etc.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">brain_img</span><span class="o">.</span><span class="n">meta</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dict([(&#39;TransferSyntaxUID&#39;, &#39;1.2.840.10008.1.2&#39;),
+      (&#39;SOPClassUID&#39;, &#39;1.2.840.10008.5.1.4.1.1.4&#39;),
+      (&#39;SOPInstanceUID&#39;, &#39;1.3.12.2.1107.5.2.13.20590.4.0.3354588020772092&#39;),
+      (&#39;StudyDate&#39;, &#39;20040930&#39;),
+      (&#39;SeriesDate&#39;, &#39;20040930&#39;),
+      (&#39;AcquisitionDate&#39;, &#39;20040930&#39;),
+      (&#39;ContentDate&#39;, &#39;20040930&#39;),
+      (&#39;StudyTime&#39;, &#39;142047.390000 &#39;),
+      (&#39;SeriesTime&#39;, &#39;142737.546000 &#39;),
+      (&#39;AcquisitionTime&#39;, &#39;142142.387518 &#39;),
+      (&#39;ContentTime&#39;, &#39;142805.234000 &#39;),
+      (&#39;Modality&#39;, &#39;MR&#39;),
+      (&#39;Manufacturer&#39;, &#39;SIEMENS&#39;),
+      (&#39;InstitutionName&#39;, &#39;UNIVERSITY OF ROCHESTER&#39;),
+      (&#39;StudyDescription&#39;, &#39;ACHTMAN^FMRI&#39;),
+      (&#39;SeriesDescription&#39;, &#39;MPRAGE T1 SAGITTAL&#39;),
+      (&#39;PatientName&#39;, &#39;Anat001&#39;),
+      (&#39;PatientID&#39;, &#39;04.09.30-14:20:32-DST-1.3.12.2.1107.5.2.13.20590&#39;),
+      (&#39;PatientBirthDate&#39;, &#39;19730905&#39;),
+      (&#39;PatientSex&#39;, &#39;M &#39;),
+      (&#39;PatientAge&#39;, &#39;031Y&#39;),
+      (&#39;PatientWeight&#39;, 77.18),
+      (&#39;StudyInstanceUID&#39;, &#39;1.3.12.2.1107.5.2.13.20590.4.0.3352789032273021&#39;),
+      (&#39;SeriesInstanceUID&#39;, &#39;1.3.12.2.1107.5.2.13.20590.4.0.3354137163342650&#39;),
+      (&#39;SeriesNumber&#39;, 2),
+      (&#39;AcquisitionNumber&#39;, 1),
+      (&#39;InstanceNumber&#39;, 80),
+      (&#39;ImagePositionPatient&#39;, (-3.2118645, -186.98305, 100.20339)),
+      (&#39;ImageOrientationPatient&#39;, (0.0, 1.0, 0.0, 0.0, 0.0, -1.0)),
+      (&#39;SamplesPerPixel&#39;, 1),
+      (&#39;Rows&#39;, 256),
+      (&#39;Columns&#39;, 256),
+      (&#39;PixelSpacing&#39;, (1.0, 1.0)),
+      (&#39;BitsAllocated&#39;, 16),
+      (&#39;BitsStored&#39;, 12),
+      (&#39;HighBit&#39;, 11),
+      (&#39;PixelRepresentation&#39;, 0),
+      (&#39;PixelData&#39;,
+       b&#39;Data converted to numpy array, raw data removed to preserve memory&#39;),
+      (&#39;shape&#39;, (256, 256)),
+      (&#39;sampling&#39;, (1.0, 1.0))])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">brain_img</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="s1">&#39;Modality&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;MR&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>we know the image from MRI</p>
+<p>After that, we can display the image</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">brain_img</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bioimage_13_0.png" src="../_images/bioimage_13_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="data-cleaning">
+<h3>Data cleaning<a class="headerlink" href="#data-cleaning" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>In structural/anatomical MRI brain images, the contrast is difference in intensities, that allows you to distinguish white matter from grey matter from the cerebralspinal fluid (CSF) around the brain and in the ventricles. The primary source of contrast in MRI is between fat and water. The MRI image you are working with has what is called T1 weighting, in which water appears dark and fat appears bright. Since CSF is mostly water, it appears black, and white matter is brightest, because it is primarily composed of axons connecting different brain areas. The myelin sheath around the axons is primarily fat. Grey matter (the outer surface of the cortex, and some inner areas like the basal ganglia) has intensity values between CSF and white matter, because the tissue is more dense than CSF, but less fatty than white matter.</p>
+</div></blockquote>
+<blockquote>
+<div><p>Because different tissues have different intensities, a histogram of the image can help us identify the intensity ranges of different tissue types.</p>
+</div></blockquote>
+<p>—PSYO/NESC 3505 Assignment 5 cell 27</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hist</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">brain_img</span><span class="p">,</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="nb">max</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hist</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bioimage_16_0.png" src="../_images/bioimage_16_0.png" />
+</div>
+</div>
+<blockquote>
+<div><p>The histogram above shows a large peak close to zero. This means there are a large number of voxels in teh image with values close to zero. This is because much of the 3D image volume is outside of the brain (the black background area), and as well there are dark areas inside the brain, where CSF is. There is a second peak between intensity values of approximately 150-200. This peak represents the “brain” voxels. Grey and white matter have pretty similar intensities in this image, so we don’t see distinct peaks in the histogram for each of these, but the histogram tells us that “brain” voxels generally have intensities between 150-200.</p>
+</div></blockquote>
+<p>—PSYO/NESC 3505 Assignment 5 cell 29</p>
+<p>Like Datacamp course mentioned, we can apply mask method to compute and plot a histogram only of voxels inside the brain mask.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">brain_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">brain_img</span> <span class="o">&gt;</span> <span class="mi">125</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">brain_mask</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bioimage_19_0.png" src="../_images/bioimage_19_0.png" />
+</div>
+</div>
+<p>In here we define the threshold is 125 above 125 equal to 1, and values below the threshold equal to 0</p>
+<p>We can plot histogram again, this time we care about mask image. therefore, voxels not in the brain mask should take value of np.nan(). not display in the histogram.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">masked_image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">brain_mask</span> <span class="o">==</span><span class="mi">1</span><span class="p">,</span> <span class="n">brain_img</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+<span class="n">hist</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">masked_image</span><span class="p">,</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="nb">max</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hist</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bioimage_22_0.png" src="../_images/bioimage_22_0.png" />
+</div>
+</div>
+<p>The image look like:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">masked_image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">brain_mask</span> <span class="o">==</span><span class="mi">1</span><span class="p">,</span> <span class="n">brain_img</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">masked_image</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bioimage_24_0.png" src="../_images/bioimage_24_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="visualization">
+<h3>Visualization<a class="headerlink" href="#visualization" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Now we’re going to load in a 3D volume, i.e., a whole series of slices that cover the entire brain. This is stored in a set of 160 DICOM files, each a slice through the brain.</p>
+</div></blockquote>
+<p>—PSYO/NESC 3505 Assignment 5 cell 13</p>
+<p>Same steps above, we load the files and check it</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vol</span> <span class="o">=</span> <span class="n">imageio</span><span class="o">.</span><span class="n">volread</span><span class="p">(</span><span class="s1">&#39;5.T1_GRE_3D_AXIAL&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reading DICOM (examining files): 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/161 files (0.6%)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  DICOM file has no SamplesPerPixel (perhaps this is a report?)
+Reading DICOM (examining files): 1/161 files (0.6%)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Warning: missing file after &#39;/home/user/Assignment_5/5.T1_GRE_3D_AXIAL/Anat001.20040930.145131.5.T1_GRE_3D_AXIAL.0006.dcm&#39;
+Reading DICOM (examining files): 1/161 files (0.6%)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>161/161 files (100.0%)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Found 1 correct series.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reading DICOM (loading data): 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>159/159  (100.0%)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vol</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(159, 256, 192)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Also, we want to know the image spatial resolution. we are using voxels to describe the 3D image ‘pixels’ (volume pixels). Voxels data stored in the metadata property ‘sampling’ (note, they are in mm)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vol</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="s1">&#39;sampling&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1.0063291139240507, 1.0, 1.0)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we use subplots methods to visualize a number of slices through the brain volume.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">])</span>
+<span class="n">subplot_counter</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">159</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">subplot_counter</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">vol</span><span class="p">[</span><span class="n">i</span><span class="p">,:,:],</span><span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">subplot_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bioimage_32_0.png" src="../_images/bioimage_32_0.png" />
+</div>
+</div>
+<p>Here we have other way: <a class="reference external" href="https://sakurachaojun.github.io/PSYO3505/demos/interact.html#interactive-app-with-plotly">Plotly</a> can directly generate interactively, ‘real-time’ images.</p>
+<blockquote>
+<div><p>Another cool thing we can do with a 3D image is visualize a slice in some other dimension. That is, although the image was aquired as 160 slices in the axial plane, we can “reslice” the image to view the image from a different perspective.</p>
+</div></blockquote>
+<p>—PSYO/NESC 3505 Assignment 5 cell 23</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">vol</span><span class="p">[:,:,</span><span class="mi">79</span><span class="p">],</span><span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bioimage_35_0.png" src="../_images/bioimage_35_0.png" />
+</div>
+</div>
+<p>By using rorate methods, turn the image right side up for the plot</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ndi</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">vol</span><span class="p">[:,:,</span><span class="mi">79</span><span class="p">],</span><span class="n">angle</span> <span class="o">=</span> <span class="mi">180</span><span class="p">,</span><span class="n">reshape</span> <span class="o">=</span> <span class="s1">&#39;false&#39;</span><span class="p">),</span><span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bioimage_37_0.png" src="../_images/bioimage_37_0.png" />
+</div>
+</div>
+<br></div>
+</div>
+<div class="section" id="working-with-fmri-statistical-maps">
+<h2>Working with fMRI Statistical Maps<a class="headerlink" href="#working-with-fmri-statistical-maps" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Background<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Now we’ll see how we can apply these approaches to fMRI data. We’re going to load in a statistical map, the results of an analysis of a single fMRI scan from an experiment. This experiment was designed to activate area V5 of the visual cortex, which is particularly sensitive to visual motion. During the scan, the stimuli alternated between moving and stationary dots every 15.4 s. During moving blocks, the participant had to press a button whenever the dot speed briefly increased; during the stationary blocks, the dots occasionally dimmed in brightness, and the participant had to press the button when they detected dimming.
+<br>
+<br>
+To analyze the data, we correlated the time series at each voxel with a time series that represents the experimental design. The experimental design could be drawn as a square wave, like this example where “on” would be moving stimuli and “off” would be stationary stimuli:
+<br>
+<br>
+The brain doesn’t actually respond in an instant on-off fashion, but rather gradually ramping up and down again. Formally this is known as the hemodynamic response function, and we correlated our fMRI data with a variant of the square wave above that is more rounded. The details aren’t important for now, however. What we are going to work with now is the output of such a correlation (also called regression) analysis.
+<br>
+<br>
+The image that we load below is called a statistical parametric map. It’s a 3D volume, like other MRI images we’ve worked with, but here the intensity value of each voxel is a statistical Z score representing the strength of that correlation (which you can also think of as the difference in fMRI signal between moving and stationary blocks), divided by its variance. Z scores are standardized, meaning that a particular Z value is always associated with a particular p value. For example, Z = 2.33 equates to a p = 0.01.
+<br>
+<br>
+As a side note, these are in a different file format. The above images were in DICOM, but these are in NIfTI format. NIfTI stands for “neuroimaging informatics technology initiative”, and was sponsored by the the National Institute of Mental Health and the National Institute of Neurological Disorders and Stroke with the aim of providing a standard file format that could be used across different software packages and labs working in neuroimaging research.
+<br>
+<br>
+SciPy’s imageio package does not read NIfTI files, so we need to import and use a different package, NiBabel, which was written specifically for reading a variety of neuroimaging data formats (in spite of NIfTI’s being an effort to standardize file formats, there are still a number of other formats in fairly widespread use). We imported NiBabel at the top of this file as nib.</p>
+</div></blockquote>
+<p>—PSYO/NESC 3505 Assignment 5 cell 34</p>
+</div>
+<div class="section" id="id2">
+<h3>Read file and check it<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fmri_zstat</span> <span class="o">=</span> <span class="n">nib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;V5_loc1_zstat1.nii.gz&#39;</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">fmri_zstat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nibabel.nifti1.Nifti1Image
+</pre></div>
+</div>
+</div>
+</div>
+<p>NIfTI image is its header, which contains metadata for the image</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">fmri_zstat</span><span class="o">.</span><span class="n">header</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;nibabel.nifti1.Nifti1Header&#39;&gt; object, endian=&#39;&lt;&#39;
+sizeof_hdr      : 348
+data_type       : b&#39;&#39;
+db_name         : b&#39;&#39;
+extents         : 0
+session_error   : 0
+regular         : b&#39;r&#39;
+dim_info        : 0
+dim             : [ 3 64 64 27  1  1  1  1]
+intent_p1       : 0.0
+intent_p2       : 0.0
+intent_p3       : 0.0
+intent_code     : z score
+datatype        : float32
+bitpix          : 32
+slice_start     : 0
+pixdim          : [1.   3.75 3.75 4.   1.   0.   0.   0.  ]
+vox_offset      : 0.0
+scl_slope       : nan
+scl_inter       : nan
+slice_end       : 0
+slice_code      : unknown
+xyzt_units      : 10
+cal_max         : 8.046828
+cal_min         : -5.9577875
+slice_duration  : 0.0
+toffset         : 0.0
+glmax           : 0
+glmin           : 0
+descrip         : b&#39;FSL5.0&#39;
+aux_file        : b&#39;&#39;
+qform_code      : scanner
+sform_code      : scanner
+quatern_b       : 0.0
+quatern_c       : 0.0
+quatern_d       : 0.0
+qoffset_x       : -121.725
+qoffset_y       : -87.425
+qoffset_z       : -52.0
+srow_x          : [   3.75     0.       0.    -121.725]
+srow_y          : [  0.      3.75    0.    -87.425]
+srow_z          : [  0.   0.   4. -52.]
+intent_name     : b&#39;&#39;
+magic           : b&#39;n+1&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p>Since the image is a “map” of the Z scores, it’s commonly called a Z map. Importantly, because the Z scores represent the correlations over the whole time series, we no longer have a 4D image, but just a 3D one:</p>
+</div></blockquote>
+<p>—PSYO/NESC 3505 Assignment 5 cell 41</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fmri_zstat</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(64, 64, 27)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Because we cannot access the data directly due to this file special format, we need applying  .get_fdata() method to access it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fmri_zstat_data</span> <span class="o">=</span> <span class="n">fmri_zstat</span><span class="o">.</span><span class="n">get_fdata</span><span class="p">()</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">fmri_zstat_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numpy.ndarray
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p>We can get a sense of the range of values in the data by finding the min and max values. The image contains positive Z scores, which represent stronger activation in the moving than stationary condition, as well as negative values, which represent stronger activation in the stationary condition. The latter are not of particular interest to us, but such “deactivations” commonly occur in just about every fMRI study.</p>
+</div></blockquote>
+<p>—PSYO/NESC 3505 Assignment 5 cell 45</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Max z value = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">fmri_zstat_data</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Min z value = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">fmri_zstat_data</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Max z value = 8.05
+Min z value = -5.96
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>Visualization<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>due the fMRI data is lower resolution, we have only 27 slices</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">])</span>
+<span class="n">subplot_counter</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">26</span><span class="p">,</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">subplot_counter</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">fmri_zstat_data</span><span class="p">[:,:,</span><span class="n">i</span><span class="p">],</span><span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">subplot_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bioimage_54_0.png" src="../_images/bioimage_54_0.png" />
+</div>
+</div>
+<blockquote>
+<div><p>This is a case where a different colour map can help with visualization. Since the data have positive and negative values, with 0 meaning “no activation difference between conditions”, it makes sense to use a colour map that has different colours for positive and negative, and no colour close to zero. The seismic colour map in Matplotlib is designed for exactly this purpose.
+<br>
+<br>
+We also provide the arguments vmin and vmax to the plot command, to set the upper and lower ranges that the colours map to. This is important to ensure that all of the panels are scaled the same; you’ll notice above that when we don’t do this, the background (non-brain areas) intensity varies in each plot, suggesting that something is not right about how we’re plotting the data.
+<br>
+<br></p>
+</div></blockquote>
+<p>—PSYO/NESC 3505 Assignment 5 cell 50</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">])</span>
+<span class="n">subplot_counter</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">26</span><span class="p">,</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">subplot_counter</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">fmri_zstat_data</span><span class="p">[:,:,</span><span class="n">i</span><span class="p">],</span><span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;seismic&#39;</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span> <span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">subplot_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bioimage_56_0.png" src="../_images/bioimage_56_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="thresholding-the-statistical-image">
+<h3>Thresholding the statistical image<a class="headerlink" href="#thresholding-the-statistical-image" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Since our objective is to identify V5 and any other brain area that responds more strongly to moving than stationary stimuli, we will next threshold the image to only show the Z scores above our statistical threshold.
+<br>
+<br>
+scipy.stats provides a convenient function to determine the Z value corresponding to any p value. Note that we need to use the inverse of our desired p threshold (1 - p):</p>
+</div></blockquote>
+<p>—PSYO/NESC 3505 Assignment 5 cell 51</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z_thresh</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="o">.</span><span class="mi">0001</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">z_thresh</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.719016485455709
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plot the image thresholded to show only voxels with values above zthresh</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">])</span>
+<span class="n">subplot_counter</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">thresh_zstat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">fmri_zstat_data</span><span class="o">&gt;</span><span class="n">z_thresh</span><span class="p">,</span><span class="n">fmri_zstat_data</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">26</span><span class="p">,</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">subplot_counter</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">thresh_zstat</span><span class="p">[:,:,</span><span class="n">i</span><span class="p">],</span><span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;seismic&#39;</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span> <span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">subplot_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bioimage_61_0.png" src="../_images/bioimage_61_0.png" />
+</div>
+</div>
+<blockquote>
+<div><p>Of course, those “blobs” don’t tell us much without being able to visualize them relative to the brain anatomy. To do this, we can overlay the thresholded Z map on a greyscale brain image. The easiest one to use is a “raw” fMRI image from the same scan, because this has the same resolution and orientation as our statistical map. There are ways to use a higher-quality anatomical scan, but we won’t add that compelxity to our code here.</p>
+</div></blockquote>
+<p>—PSYO/NESC 3505 Assignment 5 cell 55</p>
+<p>Reload the image</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="o">=</span> <span class="n">nib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;V5_loc1_example_func.nii.gz&#39;</span><span class="p">)</span>
+<span class="n">underlay</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">get_fdata</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And put all together</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">])</span>
+<span class="n">subplot_counter</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">thresh_zstat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">fmri_zstat_data</span><span class="o">&gt;</span><span class="n">z_thresh</span><span class="p">,</span><span class="n">fmri_zstat_data</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">26</span><span class="p">,</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">subplot_counter</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">fmri_zstat_data</span><span class="p">[:,:,</span><span class="n">i</span><span class="p">],</span><span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">thresh_zstat</span><span class="p">[:,:,</span><span class="n">i</span><span class="p">],</span><span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;seismic&#39;</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span> <span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">subplot_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bioimage_66_0.png" src="../_images/bioimage_66_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="interpretation">
+<h3>Interpretation<a class="headerlink" href="#interpretation" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>For reference, the 6th slice (2nd row, 3rd column) shows area V5 in each hemisphere. Due to the way the images are oriented, these are the blobs of red nearer to the back of the head (left side of image) in each hemisphere. There are other areas of significant activation as well; some of these may be real, since other brain areas might be engaged by this task (e.g., attention, or related to pressing different buttons in the two conditions). However, some of that is likely noise as well. In a typical experiment, we would do several fMRI scans to obtain a more robust estimate of activation in each individual, and we would also include many individuals in the study to determine the average response across people.</p>
+</div></blockquote>
+<p>—PSYO/NESC 3505 Assignment 5 cell 59</p>
+<p>So far, we end MRI Image Analysis in Python</p>
+</div>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p>[1] <a class="reference external" href="https://dalpsychneuro.github.io/NESC_3505_textbook/intro.html">NESC 3505 Neural Data Science, at Dalhousie University. Textbook</a>
+<br>
+[2] NESC 3505 Neural Data Science, at Dalhousie University. Assignment 5
+<br>
+[3] <a class="reference external" href="https://learn.datacamp.com/courses/biomedical-image-analysis-in-python">‘Biomedical Image Analysis in Python’.an INTERACTIVE COURSE</a></p>
+<p>Based on assignment 5 and DataCamp ‘Biomedical Image Analysis in Python’.an INTERACTIVE COURSE (Stephen Bailey) <br>
+<font color = red >This Demo and the attached files from course PSYO/NESC 3505 Neural Data Science, at Dalhousie University. You should not disseminate, distribute or copy. </font>
+<br>
+<font color = red >This Demo using some knowledge and skills from Datacamp ‘Biomedical Image Analysis in Python’.an INTERACTIVE COURSE (Stephen Bailey)
+<br>I am NOT post inappropriate or copyrighted content, advertise or promote outside products or organizations </font>
+<br>© Copyright 2020.PSYO/NESC 3505 FAll 2020 https://dalpsychneuro.github.io/NESC_3505_textbook/intro.html
+<br>© Copyright ‘Biomedical Image Analysis in Python’.an INTERACTIVE COURSE (Stephen Bailey) https://learn.datacamp.com/courses/biomedical-image-analysis-in-python
+<br>
+<strong>For demonstration purposes only</strong></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./data"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="eeg.html" title="previous page">EEG/ERP Data Analysis</a>
+    <a class='right-next' id="next-link" href="../web/gitbook.html" title="next page">Use Git book bulid your own page</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Chaojun Ma<br/>
+        
+            &copy; Copyright 2020-2021. This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported License.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'G-NVX8B0W6TJ', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>

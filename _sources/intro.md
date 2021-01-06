@@ -11,29 +11,6 @@ I will continue to update this website as a personal blog to share knowledge and
 
 -----
 
-## Topic
-
-Data processing methods:
-
-* [Exploratory data analysis](https://sakurachaojun.github.io/PSYO3505/assignments/EDA.html)
-* [Single Unit Data and Spike Trains](https://sakurachaojun.github.io/PSYO3505/assignments/single.html)
-* [MRI Image Analysis in Python](https://sakurachaojun.github.io/PSYO3505/assignments/bioimage.html)
-
-Data visualization:
-
-* [Biomedical image visualization](https://sakurachaojun.github.io/PSYO3505/assignments/bioimage.html#visualization)
-* [EEG/ERP Data Analysis](https://sakurachaojun.github.io/PSYO3505/projects/eeg.html)
-* [Data visualization with Seaborn](https://sakurachaojun.github.io/PSYO3505/demos/seaborn.html)
-* [Interactive data visualizations](https://sakurachaojun.github.io/PSYO3505/demos/interact.html)
-
-
-
-Others:
-* [Use Git book bulid your own page](https://sakurachaojun.github.io/PSYO3505/demos/gitbook.html)
-* [Writing Math Equations in Jupyter](https://sakurachaojun.github.io/PSYO3505/demos/latex.html)
-
-------
-
 ## What I am doing Now
 
 1. Using [PsychoPy](https://www.psychopy.org) to Develop New Psychological Experimental Projects:
@@ -54,8 +31,10 @@ Update 12/18/2020
 
 An undergraduate student is also an enthusiastic website developer. Like to share knowledge and cooking.
 
-Personal Home Page: www.chaojun.ca
+[Personal Home Page](https://www.chaojun.ca)
 
-Github: https://github.com/SakuraChaojun
+[Github]( https://github.com/SakuraChaojun)
+
+
 
 
