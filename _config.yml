@@ -1,8 +1,9 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: PSYO3505 Portfolio
+title: Art of Thinking
 author: Chaojun Ma
+copyright: 2020-2021. This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported License
 logo: 'images/logo_icon.png'
 
 # Force re-execution of notebooks on each build.
