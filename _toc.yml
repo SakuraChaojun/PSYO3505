@@ -2,23 +2,26 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 #
 - file: intro
-- part: Assignments
+- part: Experimental Design
   sections:
-    - file: assignments/EDA
-    - file: assignments/bioimage
-    - file: assignments/single
+    - file: exp/single
     
-- part: Projects
+- part: Data Analysis
   sections:
-    - file: projects/eeg
-
-- part: Demos
+    - file: data/EDA
+    - file: data/eeg
+    - file: data/bioimage
+    
+- part: Web Development
   sections:
-    - file: demos/latex
-    - file: demos/gitbook
-    - file: demos/seaborn
-    - file: demos/interact
-
+    - file: web/gitbook
+   
+- part: Others
+  sections:
+    - file: others/latex
+    - file: others/seaborn
+    - file: others/interact
+        
 - part: References
   sections:
     - file: re
