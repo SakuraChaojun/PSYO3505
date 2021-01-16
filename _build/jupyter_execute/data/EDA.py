@@ -4,11 +4,7 @@
 # # Exploratory data analysis 
 # 
 
-# Based on assignment 3 <br>
-# <font color = red >This Demo and the attached files from course PSYO/NESC 3505 Neural Data Science, at Dalhousie University. You should not disseminate, distribute or copy. </font>
-# <br><font color = red >I am NOT post inappropriate or copyrighted content, advertise or promote outside products or organizations </font>
-# <br>© Copyright 2020.PSYO/NESC 3505 FAll 2020 https://dalpsychneuro.github.io/NESC_3505_textbook/intro.html
-# <br>**For demonstration purposes only**
+# Last updated: 2020-12-22
 
 # ## Background
 # 
@@ -20,7 +16,7 @@
 
 # ## Read file and check it
 
-# In[32]:
+# In[1]:
 
 
 import pandas as pd
@@ -30,7 +26,7 @@ import matplotlib.pyplot as plt
 
 # First of all we need input and examine the data 
 
-# In[5]:
+# In[2]:
 
 
 subjects = ['001_2015_05_22_11_30',
@@ -44,7 +40,7 @@ in_file = subjects[0]+'/'+subjects[0]+'_data.txt'
 df = pd.read_csv(in_file)
 
 
-# In[7]:
+# In[3]:
 
 
 df.head(5)
@@ -52,7 +48,7 @@ df.head(5)
 
 # looks like not very well, we need add escape character. Typically, I prefer read csv file directly and then check the head.
 
-# In[9]:
+# In[4]:
 
 
 df = pd.read_csv(in_file,sep = '\t')
@@ -62,13 +58,13 @@ df
 # look at the head and tail again 
 # 
 
-# In[10]:
+# In[5]:
 
 
 df.head(5)
 
 
-# In[11]:
+# In[6]:
 
 
 df.tail(5)
@@ -76,7 +72,7 @@ df.tail(5)
 
 # Then we check have missing value 
 
-# In[12]:
+# In[7]:
 
 
 print(pd.isna(df).sum())
@@ -89,7 +85,7 @@ print(pd.isna(df).sum())
 # .dropna() method
 # ```
 
-# In[13]:
+# In[8]:
 
 
 df = df.dropna()
@@ -101,7 +97,7 @@ print(pd.isna(df).sum())
 # value = df['block']
 # print(value.unique())
 
-# In[18]:
+# In[9]:
 
 
 df = df[df.block!='practice']
@@ -111,13 +107,13 @@ print(value.unique())
 
 # Then we found ‘rt’ column is not milliseconds and need to convert
 
-# In[20]:
+# In[10]:
 
 
 df['rt']
 
 
-# In[21]:
+# In[11]:
 
 
 df['rt'] = df['rt']*1000
@@ -126,7 +122,7 @@ print(df['rt'])
 
 # ‘rt’ is our interested variable, but In most behavioural studies, RTs are not normally distributed, so we need to Examining the RT distribution
 
-# In[22]:
+# In[12]:
 
 
 df['rt'].describe()
@@ -134,7 +130,7 @@ df['rt'].describe()
 
 # plot a histogram of RTs
 
-# In[23]:
+# In[13]:
 
 
 df['rt'].plot(kind='hist')
@@ -153,7 +149,7 @@ plt.show()
 # According to above figure, the histogram look not follow normal distribution, Looks like right skewed. Because the data sets have low ‘high value
 # <br> check the cdf
 
-# In[25]:
+# In[14]:
 
 
 df['rt'].plot(kind = 'hist',cumulative = True, density =True)
@@ -178,7 +174,7 @@ plt.show()
 
 # So, for log(RT)
 
-# In[26]:
+# In[15]:
 
 
 # log-transform the rt data (done for you) 
@@ -199,7 +195,7 @@ plt.show()
 
 # inverse: $1/RT$
 
-# In[27]:
+# In[16]:
 
 
 df['invrt'] = 1/(df['rt'])
@@ -222,7 +218,7 @@ plt.show()
 # ```{tip} You can found more information about flanker experiment in this article 'Flanker and Simon effects interact at the response selection stage'
 # ```
 
-# In[28]:
+# In[17]:
 
 
 rt_mean = df.groupby(by = 'flankers')[['rt','error']].agg('mean')
@@ -232,7 +228,7 @@ rt_mean
 
 # Generate a table for accuracy (the error column).
 
-# In[29]:
+# In[18]:
 
 
 correct = df.groupby(by = 'flankers')[['error']].agg('sum')
@@ -243,7 +239,7 @@ correct
 
 #  showing the accuracy rate
 
-# In[30]:
+# In[19]:
 
 
 total= df.groupby(by = 'flankers')[['error']].agg('count')
@@ -257,7 +253,7 @@ number
 
 # Plot box plots of the log-transformed RT data (logrt) for each flanker conditio
 
-# In[31]:
+# In[20]:
 
 
 boxplot1 = df.loc[df['flankers']=='congruent','logrt'].plot(kind = 'box',title = 'Congruent')
@@ -288,7 +284,7 @@ plt.show()
 # <br>
 # [3] [An Extensive Step by Step Guide to Exploratory Data Analysis](https://towardsdatascience.com/an-extensive-guide-to-exploratory-data-analysis-ddd99a03199e)
 
-# Based on assignment 3 <br>
+# 
 # <font color = red >This Demo and the attached files from course PSYO/NESC 3505 Neural Data Science, at Dalhousie University. You should not disseminate, distribute or copy. </font>
 # <br><font color = red >I am NOT post inappropriate or copyrighted content, advertise or promote outside products or organizations </font>
 # <br>© Copyright 2020.PSYO/NESC 3505 FAll 2020 https://dalpsychneuro.github.io/NESC_3505_textbook/intro.html

@@ -23,5 +23,5 @@
     - file: others/interact
         
 - part: References
-  sections:
+  chapters:
     - file: re

@@ -3,11 +3,7 @@
 
 # # Single Unit Data and Spike Trains
 
-# Based on assignment 4<br>
-# <font color = red >This Demo and the attached files from course PSYO/NESC 3505 Neural Data Science, at Dalhousie University. You should not disseminate, distribute or copy. </font>
-# <br><font color = red >I am NOT post inappropriate or copyrighted content, advertise or promote outside products or organizations </font>
-# <br>© Copyright 2020.PSYO/NESC 3505 FAll 2020 https://dalpsychneuro.github.io/NESC_3505_textbook/intro.html
-# <br>**For demonstration purposes only**
+# Last updated: 2020-12-22 Tags: [#Experitments](),[#Psychopy]() See also: [Generate and Display Grating Stimuli]()
 
 # ## Background 
 
@@ -358,7 +354,7 @@ condition_labels
 
 # Reformat the data from raw data set
 
-# In[26]:
+# In[25]:
 
 
 psth_df3_list = []
@@ -370,7 +366,7 @@ for neuron in neuron_labels:
             psth_df3_list.append(spike_count)
 
 
-# In[32]:
+# In[26]:
 
 
 #Combine labels and data together 
@@ -379,13 +375,13 @@ psth_df3 = psth_df3.set_index(['neuron','condition','contrast'])
 psth_df3.head(20)
 
 
-# In[33]:
+# In[27]:
 
 
 psth_df3.tail(20)
 
 
-# In[42]:
+# In[28]:
 
 
 fig = plt.figure(figsize=[15,15])
@@ -441,7 +437,6 @@ plt.show()
 # [2] NESC 3505 Neural Data Science, at Dalhousie University. Assignment 5
 # <br>
 
-# Based on assignment 4 <br>
 # <font color = red >This Demo and the attached files from course PSYO/NESC 3505 Neural Data Science, at Dalhousie University. You should not disseminate, distribute or copy. </font>
 # <br><font color = red >I am NOT post inappropriate or copyrighted content, advertise or promote outside products or organizations </font>
 # <br>© Copyright 2020.PSYO/NESC 3505 FAll 2020 https://dalpsychneuro.github.io/NESC_3505_textbook/intro.html
